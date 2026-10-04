@@ -1,0 +1,152 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "apoloe4/moonreconcile"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn reconcile(Snapshot, Snapshot, Policy) -> Outcome raise ReconcileError
+
+pub fn synchronize(Inventory, Inventory, Config, Policy) -> Outcome raise ReconcileError
+
+// Errors
+pub(all) suberror ReconcileError {
+  InvalidConfig(String)
+  Incompatible(String)
+  InvalidFrame(String)
+  LimitExceeded(String)
+  StaleSnapshot
+  VerificationFailed
+  InvalidPlan(String)
+} derive(Eq, @debug.Debug)
+
+// Types and methods
+pub struct BucketOffer {
+  // private fields
+}
+pub fn BucketOffer::new(Int, Layout, Snapshot) -> Self raise ReconcileError
+pub fn BucketOffer::snapshot(Self) -> Snapshot
+
+type Cell derive(@debug.Debug)
+
+pub struct Collector {
+  // private fields
+}
+pub fn Collector::accept(Self, BucketOffer, BucketOffer, Policy) -> Outcome raise ReconcileError
+pub fn Collector::finish(Self) -> Plan raise ReconcileError
+pub fn Collector::new(Manifest, Manifest, max_changes? : Int) -> Self raise ReconcileError
+pub fn Collector::pending(Self) -> Array[Int]
+
+pub struct Config {
+  // private fields
+} derive(Eq, @debug.Debug)
+pub fn Config::cells(Self) -> Int
+pub fn Config::new(Int, seed? : UInt64) -> Self raise ReconcileError
+pub fn Config::seed(Self) -> UInt64
+pub fn Config::width(Self) -> Int
+
+pub struct DecodeLimits {
+  // private fields
+}
+pub fn DecodeLimits::new(max_width? : Int, max_members? : Int) -> Self raise ReconcileError
+
+pub struct DecodeReport {
+  // private fields
+}
+pub fn DecodeReport::complete(Self) -> Bool
+pub fn DecodeReport::negative(Self) -> Array[UInt64]
+pub fn DecodeReport::positive(Self) -> Array[UInt64]
+pub fn DecodeReport::residual_cells(Self) -> Int
+pub fn DecodeReport::steps(Self) -> Int
+
+pub struct Fingerprint {
+  // private fields
+} derive(Eq, @debug.Debug)
+pub fn Fingerprint::count(Self) -> Int
+
+pub struct FrameReader {
+  // private fields
+}
+pub fn FrameReader::buffered_bytes(Self) -> Int
+pub fn FrameReader::feed(Self, Bytes) -> Snapshot? raise ReconcileError
+pub fn FrameReader::finish(Self) -> Unit raise ReconcileError
+pub fn FrameReader::new(DecodeLimits) -> Self
+pub fn FrameReader::reset(Self) -> Unit
+
+pub struct Inventory {
+  // private fields
+}
+pub fn Inventory::apply(Self, Plan) -> Self raise ReconcileError
+pub fn Inventory::bucket_offer(Self, Layout, Int, Config) -> BucketOffer raise ReconcileError
+pub fn Inventory::bucket_offers(Self, Layout, Array[Int], Config, max_cells? : Int) -> Array[BucketOffer] raise ReconcileError
+pub fn Inventory::contains(Self, UInt64) -> Bool
+pub fn Inventory::epoch(Self) -> UInt64
+pub fn Inventory::fingerprint(Self) -> Fingerprint
+pub fn Inventory::from_ids(Array[UInt64], scope? : UInt64, epoch? : UInt64) -> Self
+pub fn Inventory::ids(Self) -> Array[UInt64]
+pub fn Inventory::insert(Self, UInt64) -> Bool raise ReconcileError
+pub fn Inventory::manifest(Self, Layout) -> Manifest
+pub fn Inventory::new(scope? : UInt64, epoch? : UInt64) -> Self
+pub fn Inventory::remove(Self, UInt64) -> Bool raise ReconcileError
+pub fn Inventory::snapshot(Self, Config) -> Snapshot raise ReconcileError
+
+pub struct Layout {
+  // private fields
+} derive(Eq, @debug.Debug)
+pub fn Layout::bucket(Self, UInt64) -> Int
+pub fn Layout::buckets(Self) -> Int
+pub fn Layout::new(Int, seed? : UInt64) -> Self raise ReconcileError
+
+pub struct Manifest {
+  // private fields
+}
+pub fn Manifest::changed_buckets(Self, Self) -> Array[Int] raise ReconcileError
+pub fn Manifest::decode(Bytes, max_buckets? : Int, max_members? : Int) -> Self raise ReconcileError
+pub fn Manifest::encode(Self) -> Bytes
+pub fn Manifest::epoch(Self) -> UInt64
+pub fn Manifest::fingerprint(Self) -> Fingerprint
+
+pub enum Outcome {
+  Ready(Plan)
+  Retry(Config)
+  FullTransfer(Int)
+}
+
+pub struct Plan {
+  // private fields
+}
+pub fn Plan::additions(Self) -> Array[UInt64]
+pub fn Plan::removals(Self) -> Array[UInt64]
+pub fn Plan::target_epoch(Self) -> UInt64
+
+pub struct Policy {
+  // private fields
+}
+pub fn Policy::new(max_width? : Int, max_differences? : Int) -> Self raise ReconcileError
+
+pub struct Sketch {
+  // private fields
+}
+pub fn Sketch::config(Self) -> Config
+pub fn Sketch::copy(Self) -> Self
+pub fn Sketch::decode(Self, budget? : Int) -> DecodeReport raise ReconcileError
+pub fn Sketch::erase(Self, UInt64) -> Unit raise ReconcileError
+pub fn Sketch::insert(Self, UInt64) -> Unit raise ReconcileError
+pub fn Sketch::new(Config) -> Self
+pub fn Sketch::subtract(Self, Self) -> Self raise ReconcileError
+
+pub struct Snapshot {
+  // private fields
+}
+pub fn Snapshot::config(Self) -> Config
+pub fn Snapshot::decode(Bytes, DecodeLimits) -> Self raise ReconcileError
+pub fn Snapshot::encode(Self) -> Bytes
+pub fn Snapshot::encoded_size(Self) -> Int
+pub fn Snapshot::epoch(Self) -> UInt64
+pub fn Snapshot::fingerprint(Self) -> Fingerprint
+pub fn Snapshot::scope(Self) -> UInt64
+
+// Type aliases
+
+// Traits

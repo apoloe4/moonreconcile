@@ -1,8 +1,8 @@
 ///|
 /// Per-call limits are checked before allocating the cell array.
 pub struct DecodeLimits {
-  max_width : Int
-  max_members : Int
+  priv max_width : Int
+  priv max_members : Int
 }
 
 ///|

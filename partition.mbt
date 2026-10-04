@@ -2,8 +2,8 @@
 /// Hash partitioning permits exchanging sketches only for changed buckets.
 /// Both peers must negotiate identical layout; seeds are not secret keys.
 pub struct Layout {
-  buckets : Int
-  seed : UInt64
+  priv buckets : Int
+  priv seed : UInt64
 } derive(Eq, Debug)
 
 ///|
@@ -29,11 +29,11 @@ pub fn Layout::bucket(self : Layout, key : UInt64) -> Int {
 
 ///|
 pub struct Manifest {
-  scope : UInt64
-  epoch : UInt64
-  layout : Layout
-  total : Fingerprint
-  fingerprints : Array[Fingerprint]
+  priv scope : UInt64
+  priv epoch : UInt64
+  priv layout : Layout
+  priv total : Fingerprint
+  priv fingerprints : Array[Fingerprint]
 }
 
 ///|
@@ -82,9 +82,9 @@ pub fn Manifest::changed_buckets(
 
 ///|
 pub struct BucketOffer {
-  index : Int
-  layout : Layout
-  snapshot : Snapshot
+  priv index : Int
+  priv layout : Layout
+  priv snapshot : Snapshot
 }
 
 ///|
@@ -180,12 +180,12 @@ pub fn Inventory::bucket_offers(
 /// Collect validated per-bucket plans in any order, with idempotent retransmits.
 /// No global Plan is exposed until every changed bucket has completed.
 pub struct Collector {
-  source : Manifest
-  target : Manifest
-  pending : Array[Int]
-  plans : Map[Int, Plan]
-  max_changes : Int
-  mut accepted_changes : Int
+  priv source : Manifest
+  priv target : Manifest
+  priv pending : Array[Int]
+  priv plans : Map[Int, Plan]
+  priv max_changes : Int
+  priv mut accepted_changes : Int
 }
 
 ///|

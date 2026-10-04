@@ -1,10 +1,10 @@
 ///|
 /// Exact source set tracker: idempotent changes, immutable snapshot exports.
 pub struct Inventory {
-  scope : UInt64
-  mut epoch : UInt64
-  keys : Map[UInt64, Bool]
-  mut fingerprint : Fingerprint
+  priv scope : UInt64
+  priv mut epoch : UInt64
+  priv keys : Map[UInt64, Bool]
+  priv mut fingerprint : Fingerprint
 }
 
 ///|

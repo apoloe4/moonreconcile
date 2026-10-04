@@ -12,8 +12,8 @@ pub(all) suberror ReconcileError {
 ///|
 /// Three disjoint hash bands, each of `width` cells. Immutable configuration.
 pub struct Config {
-  width : Int
-  seed : UInt64
+  priv width : Int
+  priv seed : UInt64
 } derive(Eq, Debug)
 
 ///|
@@ -45,9 +45,9 @@ pub fn Config::cells(self : Config) -> Int {
 ///|
 /// Commutative, non-cryptographic set fingerprint. This is not authentication.
 pub struct Fingerprint {
-  count : Int
-  sum : UInt64
-  xor : UInt64
+  priv count : Int
+  priv sum : UInt64
+  priv xor : UInt64
 } derive(Eq, Debug)
 
 ///|
@@ -66,17 +66,17 @@ struct Cell {
 /// Mutable algebraic sketch. Insertion/removal require valid set semantics.
 /// Prefer Inventory when callers cannot guarantee uniqueness.
 pub struct Sketch {
-  config : Config
-  cells : Array[Cell]
+  priv config : Config
+  priv cells : Array[Cell]
 }
 
 ///|
 /// Decode may be partial; only a complete result is a usable synchronization plan.
 pub struct DecodeReport {
-  positive : Array[UInt64]
-  negative : Array[UInt64]
-  residual : Int
-  steps : Int
+  priv positive : Array[UInt64]
+  priv negative : Array[UInt64]
+  priv residual : Int
+  priv steps : Int
 }
 
 ///|
@@ -107,10 +107,10 @@ pub fn DecodeReport::steps(self : DecodeReport) -> Int {
 ///|
 /// Scope separates datasets; epoch identifies an immutable snapshot version.
 pub struct Snapshot {
-  scope : UInt64
-  epoch : UInt64
-  fingerprint : Fingerprint
-  sketch : Sketch
+  priv scope : UInt64
+  priv epoch : UInt64
+  priv fingerprint : Fingerprint
+  priv sketch : Sketch
 }
 
 ///|
@@ -136,13 +136,13 @@ pub fn Snapshot::config(self : Snapshot) -> Config {
 ///|
 /// Private fields prevent unvalidated plans being constructed by consumers.
 pub struct Plan {
-  scope : UInt64
-  source_epoch : UInt64
-  target_epoch : UInt64
-  source : Fingerprint
-  target : Fingerprint
-  add : Array[UInt64]
-  remove : Array[UInt64]
+  priv scope : UInt64
+  priv source_epoch : UInt64
+  priv target_epoch : UInt64
+  priv source : Fingerprint
+  priv target : Fingerprint
+  priv add : Array[UInt64]
+  priv remove : Array[UInt64]
 }
 
 ///|
@@ -169,8 +169,8 @@ pub enum Outcome {
 
 ///|
 pub struct Policy {
-  max_width : Int
-  max_differences : Int
+  priv max_width : Int
+  priv max_differences : Int
 }
 
 ///|

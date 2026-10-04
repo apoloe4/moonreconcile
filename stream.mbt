@@ -2,11 +2,11 @@
 /// Incremental framing for a single MRCL snapshot received in network chunks.
 /// Failure poisons the reader until reset; trailing bytes are never ignored.
 pub struct FrameReader {
-  limits : DecodeLimits
-  bytes : Array[Byte]
-  mut expected : Int?
-  mut failed : Bool
-  mut finished : Bool
+  priv limits : DecodeLimits
+  priv bytes : Array[Byte]
+  priv mut expected : Int?
+  priv mut failed : Bool
+  priv mut finished : Bool
 }
 
 ///|

@@ -85,5 +85,6 @@ test "wire minimum frame golden layout" {
   for i = 12; i < 124; i = i + 1 {
     assert_eq(data[i], 0)
   }
-  assert_eq(get_u32(data, 124), crc32(data, 124))
+  // Independently generated in Node.js from the specified wire layout.
+  assert_eq(get_u32(data, 124), 0x8c98af6fU)
 }
