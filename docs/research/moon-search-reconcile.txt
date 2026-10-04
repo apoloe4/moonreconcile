@@ -1,0 +1,124 @@
+12 modules found
+
+vectie/moonvis@0.1.0 (8 downloads)
+  Versioned visual tokens and provenance-bound assets for MoonSuite products.
+
+  vectie/moonvis/adapter_runtime
+    Provides the runtime adapter for MoonVis, including functions to generate capability source bundles, perform health attestations, invoke adapter requests, and reconcile state. Returns AdapterRuntimeIssue on failure.
+
+    Keywords: 适配器运行时, adapter runtime, 能力源, capability source bundle, 健康认证, health attestation, 调用, invoke, 协调, reconcile, AdapterRuntimeIssue, MoonflowAdapterRequest, ReconciliationReport, AdapterHealthAttestation, 适配器请求
+
+  vectie/moonvis/suite_adapter
+    This package provides data structures and functions for Moonflow adapter integration, including types for adapter requests, operation contracts, results, health attestations, and reconciliation reports, as well as utilities for decoding requests and generating capability JSON.
+
+    Keywords: suite_adapter, Moonflow, adapter, contract, request, result, reconciliation, health attestation, operation, capability, JSON, decode, MoonBit, vectie
+
+mengshi-12/moon-ofx-importer@0.3.0 (5 downloads)
+  Offline OFX bank transaction extraction and diagnostics
+
+  mengshi-12/moon-ofx-importer
+    …MoonBit library that parses OFX 1.x SGML and OFX 2.x XML bank statements offline, returning accounts, periods, balances, transactions and investment records along with diagnostics that name the offending tag and line. It also offers exact decimal-to-minor-unit conversion, posted-date parsing with UTC comparison, balance reconciliation, overflow-checke
+
+    Keywords: OFX, moon-ofx-importer, bank statement, parse_statement, parse_document, transaction, reconcile, diagnostic, minor units, PostedDate, investment, CSV, OFX 1.x SGML, OFX 2.x XML…
+
+sujy123456/ledgerweave@0.3.0 (4 downloads)
+  Deterministic multi-source business ledger reconciliation and exception attribution.
+
+  sujy123456/ledgerweave
+    LedgerWeave is a MoonBit engine for reconciling multi-source business ledgers across orders, payments, refunds, and adjustments, using integer minor units for amounts. It provides deterministic reconciliation via reconcile(...), validation findings, payment allocation plans, input quality reports, review queues, aging and account/currency metrics, and CSV or
+
+    Keywords: ledgerweave, reconciliation, 对账, MoonBit, orders, payments, refunds, adjustments, reconcile, finding, payment allocation, review queue, CSV export, audit export, integer minor units
+
+  sujy123456/ledgerweave/cmd/main
+    The package sujy123456/ledgerweave/cmd/main is not documented in the supplied README or public API documentation, which contain no declared types, traits, errors, or values.
+
+    Keywords: sujy123456/ledgerweave, cmd/main, LedgerWeave
+
+zploc/loci@0.1.0 (21 downloads)
+  Deterministic hashing, Merkle tree sealing, FST swarms, and AI inhabitation substrate for the loci runtime
+
+  zploc/loci/api
+    This package provides core primitives for building a content-addressed, multi-language peer coordination system. It offers bloom filtering for probabilistic routing and deduplication, a sparse merkle tree for envelope ingestion and epoch sealing, and drift commitment contracts that reconcile sparse tree state across Merkin, Mu, and Lang repositories.
+
+    Keywords: bloom filter, sparse merkle tree, bloom_add, bloom_check, tree_ingest, tree_seal, tree_sparse, drift commitment, plan_finger_wasm, triad_contract_wasm, content-addressed transfer, peer coordination, routing tokens…
+
+vectie/moonfish@0.1.0 (12 downloads)
+  —
+
+  vectie/moonfish/ashare/adjustment_provider
+    Provides an A-share adjustment evidence provider with a client for fetching factor and corporate action evidence, decoding responses, deriving adjusted prices, reconciling evidence, and modeling adjustment states with readiness and error handling.
+
+    Keywords: adjustment provider, A-share, 复权因子, 公司行动, 复权价格, AdjustmentClient, AdjustmentFactorEvidence, CorporateActionEvidence, derive_adjusted_price, reconcile_adjustment_evidence, AdjustmentState, decode_adjustment_factor_evidence, Moonbit
+
+  vectie/moonfish/ashare/paper_account
+    This package provides structures and functions for managing A-share paper trading accounts, including account creation, session observation, rebalancing, reconciliation, and persistence.
+
+    Keywords: paper account, 纸面账户, A股, ashare, moonfish, paper trading, 模拟交易, paper position, paper transaction, operator daily record, observe session, rebalance, reconcile, persist, 回测
+
+vectie/moonrobo@0.1.1 (9 downloads)
+  Auditable physical-world interface and operator cockpit for the Moon agent suite
+
+  vectie/moonrobo/src/adapter_runtime
+    This package provides the runtime adapter for Moonrobo, offering functions for capability source bundle generation, health attestation, invocation, readiness checks, and reconciliation, all returning an AdapterRuntimeIssue on failure.
+
+    Keywords: adapter runtime, moonrobo, moonbit, capability source bundle, health attestation, invoke, reconcile, readiness, AdapterRuntimeIssue, 适配器运行时, 健康证明, 调用, 协调, 就绪检查
+
+  vectie/moonrobo/src/suite_adapter
+    Provides MoonRobo's suite adapter data contracts and helpers for MoonFlow integration, including adapter operation contracts, requests, results, receipts, health attestations, readiness, and reconciliation reports. Public functions expose capability JSON, operation contract lookup, and validation of adapter requests and attempt identity.
+
+    Keywords: suite_adapter, MoonRobo, MoonFlow, adapter, AdapterOperationContract, MoonflowAdapterRequest, MoonflowAdapterResult, AdapterOperationReceipt, AdapterHealthAttestation, AdapterReadiness, AdapterReconciliationReport, capability_json, operation_contracts, 适配器, operation contract
+
+vectie/moonchat@0.1.0 (8 downloads)
+  —
+
+  vectie/moonchat/flow_adapter
+    Provides a flow adapter with async functions to execute tasks, reconcile results, and publish health status, plus JSON metadata for capabilities, schemas, versions, and adapter identification within a workspace.
+
+    Keywords: flow adapter, async execute, reconcile, publish health, workspace, JSON, capability_json, input_schema_ref, output_schema_ref, operation_ref, pack_version, adapter_id
+
+vectie/moonmold@0.1.0 (7 downloads)
+  Governed spatial modeling and representation validation for Moon Suite.
+
+  vectie/moonmold/adapter_runtime
+    This package provides the adapter runtime for MoonMold, exposing functions to build capability source bundles, generate adapter health attestations, invoke adapters with MoonflowAdapterRequest, and reconcile requests into reconciliation reports. Errors are reported through AdapterRuntimeIssue with code, path, and message fields.
+
+    Keywords: adapter runtime, MoonMold, capability_source_bundle, health_attestation, invoke, reconcile, AdapterRuntimeIssue, MoonflowAdapterRequest, AdapterResult, ReconciliationReport, AdapterHealthAttestation, workspace, 适配器运行时, 能力源打包
+
+  vectie/moonmold/suite_adapter
+    The suite_adapter package defines data types and JSON helper functions for MoonMold suite adapter contracts, requests, results, and records. It supports encoding and decoding Moonflow adapter requests and spatial operation requests, operation contract lookup, health attestation, and reconciliation reporting.
+
+    Keywords: suite_adapter, moonmold, adapter, MoonflowAdapterRequest, SpatialOperationRequest, AdapterResult, AttemptRecord, ReconciliationReport, AdapterHealthAttestation, AdapterOperationContract, JSON, decode, operation contracts, spatial operation
+
+mizchi/luna@0.25.1 (20497 downloads)
+  Fine-grained reactive UI library for Moonbit/JS
+
+  mizchi/luna/dom
+    mizchi/luna/dom provides the client-side DOM rendering layer for Luna, with typed HTML and SVG element builders, reactive text and attribute helpers, and a chainable HandlerMap for common DOM events. It also offers list reconciliation, conditional and loading components, portals, mounting, CSS style injection, and SVG/MathML namespace support.
+
+    Keywords: mizchi/luna/dom, Luna, DOM, client-side rendering, reactive, create_element, create_element_ns, HandlerMap, for_each, index_each, reconcile_items, portal, svg_ns, text_node, mount
+
+mizchi/crater-layout@0.19.0 (9303 downloads)
+  Layout kernel for crater CSS layout engine
+
+  mizchi/crater-layout/tree
+    Provides mutable layout tree data structures and incremental layout computation with caching for MoonBit's crater layout system. Features include dirty tracking, per-node layout caching, dependency analysis, resource/pending-image management (IntrinsicState), dirty-rect collection, and a reconcile_from API for incremental reflow across rebuilt trees. Support
+
+    Keywords: layout tree, LayoutNode, LayoutTree, incremental layout, incremental reflow, dirty tracking, layout cache, CacheStats, ConstraintKey, ConstraintSpace, DependencyKind, intrinsic sizing, ResourceRegistry, pending resources, dirty rect
+
+vectie/moonclaw@0.1.6 (93 downloads)
+  —
+
+  vectie/moonclaw/packtool
+    Packtool adapts MoonPack workflows to MoonClaw durable runs: it decodes, compiles, and intakes workflow declarations, authorizes tool calls, and executes, reconciles, or cancels capability attempts through host-supplied executors with audit receipts and fail-closed restart recovery.
+
+    Keywords: MoonClaw, packtool, MoonPack 工作流, 能力调用, 授权策略, 幂等执行, PackToolExecutor, 工作流编译, reconcile, 已安装包工作流, tool binding, stdin/stdout 命令步骤, AgentGoal runtime transport, restart recovery
+
+vectie/moondesk@0.1.5 (75 downloads)
+  —
+
+  vectie/moondesk/packapp
+    This package provides structures and functions for managing app registrations in a MoonDesk desktop environment. It defines AppBinding and AppRegistry types, and offers operations to compute bindings from host activation projections, reconcile or remove packs, and resolve the binding for a specific entrypoint ID.
+
+    Keywords: AppBinding, AppRegistry, MoonDesk, pack app, entrypoint, desktop app registration, host activation projection, app surface, reconcile, remove pack, resolve binding
+
+Run `moon add <module>@<version>` to add a dependency.

@@ -1,0 +1,177 @@
+9 modules found
+
+cauchyQ/moon-sketch-kit@0.1.0 (18 downloads)
+  MoonBit streaming sketch toolkit for approximate analytics, drift checks, and compact data reports.
+
+  cauchyQ/moon-sketch-kit
+    Moon Sketch Kit is a MoonBit streaming approximate analytics toolbox for profiling event streams, log tokens, tracking data, or business event flows with small memory. It combines Count-Min Sketch, Space-Saving Top-K, HyperLogLog-lite, MinHash, Bloom Filter, Reservoir Sampling, histograms, quantiles, windowed stream drift, quality gates, token profiles, and
+
+    Keywords: MoonBit, streaming analytics, approximate analysis, Count-Min Sketch, Bloom Filter, HyperLogLog, MinHash, Space-Saving Top-K, Reservoir Sampling, histogram, quantile, stream drift, quality gate, token profile, budget planner
+
+  cauchyQ/moon-sketch-kit/cmd/main
+    The package does not expose any public API or provide any documentation in the supplied sources.
+
+    Keywords: cauchyQ/moon-sketch-kit/cmd/main, main, MoonBit, empty, no public API, undocumented, no documentation
+
+  cauchyQ/moon-sketch-kit/examples/basic
+    No public API or documentation is provided. This package is an example for the cauchyQ/moon-sketch-kit library.
+
+    Keywords: example, basic, sketch, kit, MoonBit, cauchyQ, empty, no documentation
+
+  cauchyQ/moon-sketch-kit/examples/budget
+    This package is an example module within the Moon Sketch Kit project, intended as a budgeting example. It exposes no public API.
+
+    Keywords: budget, example, MoonSketchKit, moonbit, sketch-kit, cauchyQ, example package, no public API
+
+  cauchyQ/moon-sketch-kit/examples/windowed
+    This package appears to be an example or placeholder module within the Moon Sketch Kit and currently exports no public APIs or types.
+
+    Keywords: example, placeholder, windowed, Moon Sketch Kit, cauchyQ, no public API
+
+Hhsqoo/moon-frequency-sketch@0.2.0 (12 downloads)
+  A pure MoonBit streaming analytics library with frequency, heavy-hitter, cardinality, quantile, sliding-window, telemetry, and serialization components.
+
+  Hhsqoo/moon-frequency-sketch/bench
+    This package currently has no README or public API documentation provided.
+
+    Keywords: Hhsqoo, moon-frequency-sketch, bench
+
+  Hhsqoo/moon-frequency-sketch/cli
+    This package provides a command-line interface for the moon-frequency-sketch library, but currently exports no public API, types, values, or traits beyond the package declaration itself.
+
+    Keywords: moon-frequency-sketch, CLI, command-line interface, MoonBit, 频率草图, 命令行界面
+
+  Hhsqoo/moon-frequency-sketch/codec
+    This package provides serialization/deserialization utilities for CountMinSketch frequency sketches, including ByteBuffer/ByteReader for binary I/O, snapshot creation and restoration, snapshot merging, and diffing frequency changes between sketches.
+
+    Keywords: CountMinSketch, serialization, deserialization, snapshot, merge, diff, ByteBuffer, ByteReader, big-endian, integer encoding, CmsSnapshot, SketchDiff, DecodeError, frequency sketch, moon-frequency-sketch
+
+  Hhsqoo/moon-frequency-sketch/hash
+    Provides hashing functions (MurmurHash3, FNV-1a, xxHash) for integers, strings, and byte arrays, with seeded variants and functions to generate multiple independent hashes for probabilistic data structures like Count-Min Sketch.
+
+    Keywords: MoonBit, hash, MurmurHash3, FNV-1a, xxHash, Count-Min Sketch, frequency sketch, seeded hash, multiple hash functions, hash strategy
+
+  Hhsqoo/moon-frequency-sketch/sketch/bloomfilter
+    Implements a standard Bloom filter (BloomFilter) and a counting Bloom filter (CountingBloom) for membership testing with integer or string keys. Provides configurable false positive rate, approximate element counting, memory reporting, and (for CountingBloom) deletion support.
+
+    Keywords: BloomFilter, CountingBloom, 布隆过滤器, 计数布隆过滤器, add_int, add_str, contains_int, contains_str, remove_int, remove_str, approx_count, from_params, estimated_fp_rate, popcount, occupied_slots
+  Showing 5 of 12 matching packages.
+
+hiroyannnn/sketch@0.2.0 (26 downloads)
+  MoonBit probabilistic data structures library (HyperLogLog, Count-Min Sketch, Cuckoo Filter)
+
+  hiroyannnn/sketch
+    MoonBit probabilistic data structures library providing HyperLogLog for cardinality estimation, Count-Min Sketch for frequency estimation, and Cuckoo Filter for approximate set membership testing. Public APIs support adding values, querying estimates, counting stored items, and merging sketches, with SketchError for invalid precision, invalid dimensions, and
+
+    Keywords: hiroyannnn/sketch, probabilistic data structures, HyperLogLog, CountMinSketch, CuckooFilter, SketchError, cardinality estimation, frequency estimation, set membership, approximate membership, merge, 概率数据结构, 基数估计, 频率估计, 布谷鸟过滤器
+
+  hiroyannnn/sketch/lib
+    This package provides probabilistic data structures: CountMinSketch for frequency estimation, CuckooFilter for approximate set membership, and HyperLogLog for cardinality estimation. It also exposes murmurhash3 for 32-bit hashing, with a SketchError type covering precision mismatches and invalid precision or dimensions.
+
+    Keywords: sketch, CountMinSketch, CuckooFilter, HyperLogLog, murmurhash3, frequency estimation, cardinality estimation, set membership, probabilistic data structures, SketchError, merge, precision, 哈希, 基数估计, 频率估计
+
+yhsrtty/moon-distinct-sketch@0.2.1 (10 downloads)
+  MoonBit streaming sketches with bounded windows, metrics, validated frames, and distributed merge planning
+
+  yhsrtty/moon-distinct-sketch/cmd/main
+    The provided README and public API documentation are empty, so the package's functionality, public types, and use cases cannot be determined from the given sources.
+
+    Keywords: moon-distinct-sketch, cmd/main, yhsrtty/moon-distinct-sketch, yhsrtty, moon, distinct, sketch, cmd, main
+
+  yhsrtty/moon-distinct-sketch/src/bloom
+    This package provides a family of probabilistic Bloom filter data structures for approximate membership queries, duplicate detection, and cardinality sketching. It includes a fixed-size BloomFilter, a CountingBloomFilter that supports approximate deletion, a ScalableBloomFilter that grows layers as needed, and an AdmissionFilter that tracks new vs. seen keys
+
+    Keywords: Bloom filter, 概率性数据结构, 布鲁姆过滤器, approximate membership, AdmissionFilter, CountingBloomFilter, ScalableBloomFilter, BloomConfig, duplicate detection, probabilistic data structure, MoonBit, yhsrtty
+
+  yhsrtty/moon-distinct-sketch/src/countmin
+    This package provides Count-Min Sketch and Conservative Count-Min data structures for frequency estimation in data streams. It supports adding items with weights, querying estimated frequencies, and merging sketches.
+
+    Keywords: Count-Min Sketch, 保守计数最小草图, Conservative CountMin, 频率估计, frequency estimation, 数据流, data stream, 加权计数, weighted stream, add, estimate_frequency, merge, MoonBit sketch
+
+  yhsrtty/moon-distinct-sketch/src/distributed
+    This package provides distributed distinct-count estimation using HyperLogLog (HLL) sketches. It includes worker node sketches (NodeSketch), partition batch validation (PartitionBatch, MergePlan), replay protection (ReplayGuard), and hierarchical tree reduction (TreeReducer) to merge sketches across nodes for global cardinality estimates.
+
+    Keywords: distributed, distinct count, HyperLogLog, HLL, sketch, merge, cardinality, reduce, tree reduction, partition batch, replay guard, idempotence, NodeSketch, MergePlan, TreeReducer
+
+  yhsrtty/moon-distinct-sketch/src/hash
+    Provides hash utilities supporting Murmur3, XXHash64, SipHash24, and FNV-1a algorithms. Includes 32-bit and 64-bit hash functions for byte arrays and strings, with seed/key parameters and a HashAlgorithm enum.
+
+    Keywords: HashAlgorithm, Murmur3, XXHash64, SipHash24, FNV1a, hash_bytes_64, hash_string_64, byte array hashing, string hashing, seed, 64-bit hash, 32-bit hash, 哈希算法, 哈希
+  Showing 5 of 17 matching packages.
+
+zploc/loci@0.1.0 (21 downloads)
+  Deterministic hashing, Merkle tree sealing, FST swarms, and AI inhabitation substrate for the loci runtime
+
+  zploc/loci/bloom
+    Provides a BloomSketch bit-array Bloom filter for probabilistic membership testing, used in machine pruning for routing. Supports adding tokens, checking possible membership, merging sketches, rebuilding from token arrays, and customizing bit-array size and hash count. Use cases include fast 'maybe contains' checks for tokens, objects, or features in zploc/l
+
+    Keywords: Bloom filter, BloomSketch, probabilistic membership, bit-array, add token, maybe_contains, merge sketches, rebuild, routing pruning, seal-time consolidation, zploc/loci, 布隆过滤器, 概率成员…
+
+  zploc/loci/tree
+    Provides the MerkinTree data structure (the living substrate index) and its core node type MerkinNode. Supports creating trees, ingesting envelopes with routing tokens, sealing epochs, building sparse projections filtered by tokens, and computing diffs between trees.
+
+    Keywords: MerkinTree, MerkinNode, tree index, envelope ingestion, epoch sealing, sparse projection, tree diff, routing sketch, node lifecycle, zploc/loci/tree
+
+bobzhang/loop_invariants_techniques@0.18.0 (94 downloads)
+  General algorithmic techniques with loop-invariant explanations
+
+  bobzhang/loop_invariants_techniques/count_min_sketch
+    A Count-Min Sketch data structure for estimating item frequencies in a stream of (key, count) updates with sublinear space and tunable additive error and failure probability. Supports add, estimate, merge, sizing via error bounds, and applications like network monitoring, distributed analytics, heavy-hitter detection, and feature counters.
+
+    Keywords: count-min sketch, count_min_sketch, streaming aggregation, frequency estimation, approximate counting, heavy hitters, top-k, merge, from_error_bounds, add, estimate, width_of, depth_of, CountMinSketch, 过估计
+
+  bobzhang/loop_invariants_techniques/hyperloglog
+    HyperLogLog cardinality sketch for estimating the number of distinct items in a stream, with O(1) add, O(m) estimate, and mergeable registers. Supports creating sketches with configurable precision, adding Int64 items, estimating cardinality, merging sketches of equal precision, and querying register count.
+
+    Keywords: HyperLogLog, cardinality, distinct count, streaming sketch, approximate counting, hyperloglog, new, add, estimate, merge, register_count, 基数估计, 去重计数, 概率数据结构, mergeable sketch
+
+  bobzhang/loop_invariants_techniques/minhash_jaccard
+    Provides a MinHash sketch for estimating Jaccard similarity between large Int64 sets: build a k-slot signature with new(k~, seed~), add or bulk-add items, merge sketches to represent set union, and estimate similarity via matching-slot fraction. Useful for near-duplicate detection, LSH candidate search, DNA k-mer comparison, and collaborative filtering.
+
+    Keywords: MinHash, Jaccard similarity, MinHash sketch, similarity estimation, near-duplicate detection, LSH, nearest neighbours, DNA similarity, collaborative filtering, set similarity, signature, merge, k-mers, Int64, 局部…
+
+  bobzhang/loop_invariants_techniques/t_digest
+    This package implements Dunning's t-digest, a streaming quantile sketch that estimates quantiles such as the median, p99, and p999 with bounded memory using a small list of (mean, weight) centroids. Public use cases include incremental quantile estimation from data streams, tail-accurate percentile queries, and inspecting sample count or centroid count via T
+
+    Keywords: t-digest, quantile sketch, streaming quantile, percentile, p99, p999, median, Dunning, centroids, compression, TDigest, quantile, add, compress, count
+
+Suquster/moonbit-pathfinding@0.2.0 (54 downloads)
+  A MoonBit pathfinding and graph algorithms library with executable documentation, runtime-checked proof predicates, and multi-backend verification gates. Built for OSC 2026.
+
+  Suquster/moonbit-pathfinding/src/infra_metrics
+    Infrastructure metrics utilities providing DDSketch for approximate quantile queries with a configurable relative error bound, HdrHistogram for fixed-precision non-negative Int64 histograms with percentile queries, and SpanTracer for building tracing span trees with incremental per-name aggregation of count, total, and self time.
+
+    Keywords: DDSketch, HdrHistogram, SpanTracer, quantile, percentile, histogram, sketch, merge_with, value_at_percentile, span tracing, 分位查询, 直方图, 聚合统计, infra_metrics, metrics
+
+Juwan-Hwang/moon-certified@0.1.1 (19 downloads)
+  Core algorithms and data structures for MoonBit — partially formally verified
+
+  Juwan-Hwang/moon-certified/containers/count_min_sketch
+    A Count-Min Sketch data structure for probabilistic frequency estimation of items in high-volume streams. Supports adding integer or string keys, estimating counts, merging sketches, and computing inner products of frequency vectors.
+
+    Keywords: Count-Min Sketch, frequency estimation, probabilistic data structure, stream data, additive error, failure probability, merge, inner product, epsilon, delta, add, estimate, MoonBit
+
+  Juwan-Hwang/moon-certified/containers/count_sketch
+    Provides a Count-Sketch data structure for estimating the frequency of String keys with unbiased median estimates. Supports initialization with configurable width, depth, and hash function, as well as update and estimate operations.
+
+    Keywords: CountSketch, count sketch, frequency estimation, estimate, update, new, unbiased estimate, median estimate, hash function, width, depth, String keys, Int64 counts, data structure
+
+  Juwan-Hwang/moon-certified/containers/hyperloglog
+    Provides a HyperLogLog sketch for approximate distinct counting. Supports adding String and Int keys, merging sketches of equal precision, and estimating cardinality with small- and large-range corrections.
+
+    Keywords: HyperLogLog, 基数估计, sketch, distinct count, approximate counting, merge, estimate, precision, registers, add, add_int, new, 草图, 合并, 估算
+
+  Juwan-Hwang/moon-certified/containers/w_tinylfu
+    A W-TinyLFU cache implementation for Int keys and Int values, with Window, Probationary, and Protected segments, a frequency sketch, and an admission policy for cache eviction. Use cases: efficient caching with high hit rate, frequency-guided insertion, and lookup with automatic promotion.
+
+    Keywords: W-TinyLFU, cache, Int keys, Int values, capacity, Window, Probationary, Protected, frequency sketch, admission policy, segment hierarchy, promote, insert, lookup, size
+
+walkzzz/owl_mbt@0.1.1 (16 downloads)
+  Owl - OCaml Scientific Computing, pure MoonBit port (no C FFI)
+
+  walkzzz/owl_mbt/misc
+    This package provides miscellaneous data structures and utilities for MoonBit, including a DataFrame with named columns, a Count-Min Sketch for probabilistic frequency counting, a generic min-heap, a generic stack, a logger with multiple log levels, and string padding functions.
+
+    Keywords: DataFrame, 数据框, Column, 列, CountMinSketch, 计数最小草图, Heap, 堆, Stack, 栈, Logger, 日志, 字符串填充, 浮点数比较, 概率计数, MoonBit
+
+Run `moon add <module>@<version>` to add a dependency.

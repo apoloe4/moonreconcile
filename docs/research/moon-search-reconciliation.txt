@@ -1,0 +1,124 @@
+12 modules found
+
+sujy123456/ledgerweave@0.3.0 (4 downloads)
+  Deterministic multi-source business ledger reconciliation and exception attribution.
+
+  sujy123456/ledgerweave
+    LedgerWeave is a MoonBit engine for reconciling multi-source business ledgers across orders, payments, refunds, and adjustments, using integer minor units for amounts. It provides deterministic reconciliation via reconcile(...), validation findings, payment allocation plans, input quality reports, review queues, aging and account/currency metrics, and CSV or
+
+    Keywords: ledgerweave, reconciliation, 对账, MoonBit, orders, payments, refunds, adjustments, reconcile, finding, payment allocation, review queue, CSV export, audit export, integer minor units
+
+  sujy123456/ledgerweave/cmd/main
+    The package sujy123456/ledgerweave/cmd/main is not documented in the supplied README or public API documentation, which contain no declared types, traits, errors, or values.
+
+    Keywords: sujy123456/ledgerweave, cmd/main, LedgerWeave
+
+tonyfettes/giraffe@0.2.0 (45 downloads)
+  Elm-style declarative UI framework for MoonBit, built on GTK4
+
+  tonyfettes/giraffe
+    A declarative UI framework for MoonBit implementing the Elm architecture (Model-Update-View) on top of GTK4, providing virtual widget trees and automatic reconciliation. Supports widgets such as window, box, button, label, entry, and libadwaita components like adw_header_bar and adw_navigation_split_view.
+
+    Keywords: giraffe, MoonBit, GTK, Elm architecture, declarative UI, Model-Update-View, widget, reconciliation, virtual widget, window, box, button, label, entry, libadwaita, adw
+
+vectie/moonlib@0.1.23 (590 downloads)
+  Shared utility library for the Moon suite
+
+  vectie/moonlib/capability
+    Policy-free wire vocabulary/DTOs shared by MoonSuite capability producers and consumers: canonical operation/schema refs, evidence refs, adapter declaration/health/request/result plus reconciliation receipts, catalog and MoonPack manifest projections, and handover bundle/envelope metadata. Policy (authorization, retry, health, compilation) stays with hosts.
+
+    Keywords: capability contracts, 能力契约, wire vocabulary, canonical operation ref, schema ref, OperationRef, SchemaRef, content-addressed evidence, adapter declaration, adapter health, adapter request/result, reconciliation receipt, capability catalog projection, MoonPack manifest projection, handover bundle
+
+mhlagent/moonbit-accounting@0.3.0 (11 downloads)
+  Generate financial statements from normalized accounting entries.
+
+  mhlagent/moonbit-accounting
+    A package for deterministic financial reporting in MoonBit, accepting normalized entries and explicit mappings to produce stable reports in CSV, JSON, Markdown, or HTML. It also provides validation, budgets, consolidation, ratios, trends, anomaly detection, account catalogues, CSV import, journal validation, trial balances, reconciliation, and report packs.
+
+    Keywords: moonbit accounting, financial reporting, account entries, account mappings, report generation, CSV import, trial balance, budget variance, anomaly detection, consolidation, cash flow, journal validation, report pack
+
+vectie/moonvis@0.1.0 (8 downloads)
+  Versioned visual tokens and provenance-bound assets for MoonSuite products.
+
+  vectie/moonvis/suite_adapter
+    This package provides data structures and functions for Moonflow adapter integration, including types for adapter requests, operation contracts, results, health attestations, and reconciliation reports, as well as utilities for decoding requests and generating capability JSON.
+
+    Keywords: suite_adapter, Moonflow, adapter, contract, request, result, reconciliation, health attestation, operation, capability, JSON, decode, MoonBit, vectie
+
+  vectie/moonvis/adapter_runtime
+    Provides the runtime adapter for MoonVis, including functions to generate capability source bundles, perform health attestations, invoke adapter requests, and reconcile state. Returns AdapterRuntimeIssue on failure.
+
+    Keywords: 适配器运行时, adapter runtime, 能力源, capability source bundle, 健康认证, health attestation, 调用, invoke, 协调, reconcile, AdapterRuntimeIssue, MoonflowAdapterRequest, ReconciliationReport, AdapterHealthAttestation, 适配器请求
+
+mengshi-12/moon-ofx-importer@0.3.0 (5 downloads)
+  Offline OFX bank transaction extraction and diagnostics
+
+  mengshi-12/moon-ofx-importer
+    A pure MoonBit library that parses OFX 1.x SGML and OFX 2.x XML bank statements offline, returning accounts, periods, balances, transactions and investment records along with diagnostics that name the offending tag and line. It also offers exact decimal-to-minor-unit conversion, posted-date parsing with UTC comparison, balance reconciliation, overflow-checke
+
+    Keywords: OFX, moon-ofx-importer, bank statement, parse_statement, parse_document, transaction, reconcile, diagnostic, minor units, PostedDate, investment, CSV, OFX 1.x SGML, OFX 2…
+
+vectie/moonflow@0.1.2 (10 downloads)
+  Generic durable orchestration engine for Moon Suite
+
+  vectie/moonflow/closed_loop/effects
+    Closed-loop effects package for governed external effects: attempt registration, effect intent, dispatch observation/receipt, reconciliation, recovery/retry, idempotency registry, and EffectsProjection from authoritative replay, with closed EffectsError failures. Used for safe dispatch eligibility, reconciliation, and retry in FLOW-6A workflows.
+
+    Keywords: closed loop effects, FLOW-6A, EffectIntent, AttemptRegistration, DispatchObservation, EffectReceipt, Reconciliation, retry, recovery, idempotency, EffectsProjection, GovernanceBinding, FencingBinding, strict replay, 外部效果, 对账
+
+  vectie/moonflow/closed_loop/orchestration
+    Provides immutable types for the FLOW-7A closed-loop orchestration protocol, including admission, cancellation, lease, recovery, and governance proofs, receipts, and projections. Supports narrow observation ports and guarded effect dispatch for workflow orchestration.
+
+    Keywords: orchestration, governance, lease, cancellation, recovery, admission, clock, projection, proof, authorization, receipt, FLOW-7A, closed-loop, workflow, effect, dispatch, reconciliation, fencing, idempotency
+
+vectie/moonrobo@0.1.1 (9 downloads)
+  Auditable physical-world interface and operator cockpit for the Moon agent suite
+
+  vectie/moonrobo/src/adapter_runtime
+    This package provides the runtime adapter for Moonrobo, offering functions for capability source bundle generation, health attestation, invocation, readiness checks, and reconciliation, all returning an AdapterRuntimeIssue on failure.
+
+    Keywords: adapter runtime, moonrobo, moonbit, capability source bundle, health attestation, invoke, reconcile, readiness, AdapterRuntimeIssue, 适配器运行时, 健康证明, 调用, 协调, 就绪检查
+
+  vectie/moonrobo/src/suite_adapter
+    Provides MoonRobo's suite adapter data contracts and helpers for MoonFlow integration, including adapter operation contracts, requests, results, receipts, health attestations, readiness, and reconciliation reports. Public functions expose capability JSON, operation contract lookup, and validation of adapter requests and attempt identity.
+
+    Keywords: suite_adapter, MoonRobo, MoonFlow, adapter, AdapterOperationContract, MoonflowAdapterRequest, MoonflowAdapterResult, AdapterOperationReceipt, AdapterHealthAttestation, AdapterReadiness, AdapterReconciliationReport, capability_json, operation_contracts, 适配器, operation contract
+
+vectie/moonmold@0.1.0 (7 downloads)
+  Governed spatial modeling and representation validation for Moon Suite.
+
+  vectie/moonmold/adapter_runtime
+    This package provides the adapter runtime for MoonMold, exposing functions to build capability source bundles, generate adapter health attestations, invoke adapters with MoonflowAdapterRequest, and reconcile requests into reconciliation reports. Errors are reported through AdapterRuntimeIssue with code, path, and message fields.
+
+    Keywords: adapter runtime, MoonMold, capability_source_bundle, health_attestation, invoke, reconcile, AdapterRuntimeIssue, MoonflowAdapterRequest, AdapterResult, ReconciliationReport, AdapterHealthAttestation, workspace, 适配器运行时, 能力源打包
+
+  vectie/moonmold/suite_adapter
+    The suite_adapter package defines data types and JSON helper functions for MoonMold suite adapter contracts, requests, results, and records. It supports encoding and decoding Moonflow adapter requests and spatial operation requests, operation contract lookup, health attestation, and reconciliation reporting.
+
+    Keywords: suite_adapter, moonmold, adapter, MoonflowAdapterRequest, SpatialOperationRequest, AdapterResult, AttemptRecord, ReconciliationReport, AdapterHealthAttestation, AdapterOperationContract, JSON, decode, operation contracts, spatial operation
+
+mizchi/luna@0.25.1 (20497 downloads)
+  Fine-grained reactive UI library for Moonbit/JS
+
+  mizchi/luna/dom
+    mizchi/luna/dom provides the client-side DOM rendering layer for Luna, with typed HTML and SVG element builders, reactive text and attribute helpers, and a chainable HandlerMap for common DOM events. It also offers list reconciliation, conditional and loading components, portals, mounting, CSS style injection, and SVG/MathML namespace support.
+
+    Keywords: mizchi/luna/dom, Luna, DOM, client-side rendering, reactive, create_element, create_element_ns, HandlerMap, for_each, index_each, reconcile_items, portal, svg_ns, text_node, mount
+
+dowdiness/moondsp@0.6.0 (71 downloads)
+  MoonBit DSP audio engine
+
+  dowdiness/moondsp/scheduler
+    This package provides the scheduler for the moondsp audio engine, bridging identity-bearing pattern and song snapshots to a bound voice pool, handling tempo, note envelopes, and block rendering. It enables live orchestration of pattern edits with voice reconciliation and graph control for UI or authoring code.
+
+    Keywords: scheduler, pattern snapshot, song snapshot, voice pool, audio block, transport, tempo, note envelope, MIDI, live edit, orchestration, voice control, block rendering, playback, DSP
+
+KKKIIO/selene@0.37.5 (66 downloads)
+  ECS game engine in MoonBit
+
+  KKKIIO/selene/xaml_view
+    In-process runtime for generated Selene View packages. It owns ViewHost mounting/reconciliation, ViewModel/NodeSpec lifecycle state, UI event-to-action routing, visual state application, gradient brush handling and focus auto-reveal; Custom View packages implement mount/replace/component_plugin on child subtrees. Does not parse XAML.
+
+    Keywords: xaml_view, Selene视图, ViewHost, GeneratedViewRuntime, NodeSpec, TreeMutation, VisualState, UiViewEvent, UiEvent, MountedView, reconcile_specs, Custom View, 视图挂载, 事件路由, 视觉状态
+
+Run `moon add <module>@<version>` to add a dependency.
