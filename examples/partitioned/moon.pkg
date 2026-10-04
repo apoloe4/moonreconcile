@@ -1,0 +1,6 @@
+pkgtype(kind: "executable")
+
+import {
+  "apoloe4/moonreconcile" @reconcile,
+  "moonbitlang/core/debug",
+}

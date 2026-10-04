@@ -1,0 +1,38 @@
+name: MoonBit checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [wasm-gc, wasm, js, native]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - run: moon version --all
+      - run: moon check --deny-warn --target ${{ matrix.target }}
+      - run: moon build --deny-warn --target ${{ matrix.target }}
+      - run: moon test --deny-warn --target ${{ matrix.target }}
+      - run: moon run examples/basic --target ${{ matrix.target }}
+      - run: moon run examples/partitioned --target ${{ matrix.target }}
+      - run: moon run examples/capacity --target ${{ matrix.target }}
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - run: moon fmt --check
+      - run: moon info
+      - run: git diff --exit-code

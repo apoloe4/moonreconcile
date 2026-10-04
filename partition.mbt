@@ -184,14 +184,27 @@ pub struct Collector {
   target : Manifest
   pending : Array[Int]
   plans : Map[Int, Plan]
+  max_changes : Int
+  mut accepted_changes : Int
 }
 
 ///|
 pub fn Collector::new(
   source : Manifest,
   target : Manifest,
+  max_changes? : Int = 100000,
 ) -> Collector raise ReconcileError {
-  { source, target, pending: source.changed_buckets(target), plans: Map([]), }
+  if max_changes < 0 || max_changes > 1000000 {
+    raise InvalidConfig("invalid aggregate change budget")
+  }
+  {
+    source,
+    target,
+    pending: source.changed_buckets(target),
+    plans: Map([]),
+    max_changes,
+    accepted_changes: 0,
+  }
 }
 
 ///|
@@ -240,7 +253,12 @@ pub fn Collector::accept(
         raise VerificationFailed
       }
     } else {
+      let changes = plan.add.length() + plan.remove.length()
+      if changes > self.max_changes - self.accepted_changes {
+        raise LimitExceeded("aggregate partition differences")
+      }
       self.plans[index] = plan
+      self.accepted_changes += changes
     }
   }
   outcome
