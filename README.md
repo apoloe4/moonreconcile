@@ -21,6 +21,7 @@
 - `reconcile` 明确返回 `Ready / Retry / FullTransfer`；恢复不完整时不发布同步计划。
 - MRCL 二进制快照、MRPM 分区清单、CRC-32、版本/保留字段检查、长度检查、分配上限及分带一致性检查。
 - `FrameReader` 支持分块输入、截断检测和错误后重置。
+- 有序数据库游标可直接构建快照，校验重复和逆序 ID，无需保存完整成员 Map；容量规划器按字节预算给出初始宽度与重试上限。
 - `Layout / Manifest / BucketOffer / Collector` 支持先定位变化分区、任意顺序收集、幂等重传及全局差异数量限制。
 - 可运行的基础、分区和容量回退示例；确定性生成测试、异常输入测试与多编译目标 CI。
 
@@ -98,6 +99,7 @@ match @reconcile.reconcile(source.snapshot(config), received, @reconcile.Policy:
 
 - [查重记录](docs/DUPLICATION_REVIEW.md)：检索范围、竞争库源码核查与不确定项。
 - [接口使用指南](docs/USAGE.md)、[二进制格式](docs/WIRE_FORMAT.md)、[测试说明](docs/TESTING.md)。
+- [可复现基准](docs/BENCHMARK.md)：不同集合大小、差异量和 seed 下的构建、编解码、恢复及应用耗时。
 - [项目申报书初稿](docs/PROJECT_PROPOSAL.md)：供参赛者理解和自行润色。
 - [来源与许可证说明](NOTICE.md)：算法参考论文、混合函数和 CRC 来源，AI 辅助说明。
 - 根目录 [Apache-2.0 许可证](LICENSE)。

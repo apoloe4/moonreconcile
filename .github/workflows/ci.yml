@@ -25,6 +25,7 @@ jobs:
       - run: moon run examples/basic --target ${{ matrix.target }}
       - run: moon run examples/partitioned --target ${{ matrix.target }}
       - run: moon run examples/capacity --target ${{ matrix.target }}
+      - run: moon run examples/benchmark --target ${{ matrix.target }} --release
   style:
     runs-on: ubuntu-latest
     steps:
