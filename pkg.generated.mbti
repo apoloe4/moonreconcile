@@ -28,6 +28,14 @@ pub struct BucketOffer {
 pub fn BucketOffer::new(Int, Layout, Snapshot) -> Self raise ReconcileError
 pub fn BucketOffer::snapshot(Self) -> Snapshot
 
+pub struct CapacityPlan {
+  // private fields
+}
+pub fn CapacityPlan::initial(Self) -> Config
+pub fn CapacityPlan::max_width(Self) -> Int
+pub fn CapacityPlan::new(Int, max_wire_bytes? : Int, seed? : UInt64) -> Self raise ReconcileError
+pub fn CapacityPlan::smaller_than_full_ids(Self, Int) -> Bool raise ReconcileError
+
 type Cell derive(@debug.Debug)
 
 pub struct Collector {
@@ -45,6 +53,7 @@ pub fn Config::cells(Self) -> Int
 pub fn Config::new(Int, seed? : UInt64) -> Self raise ReconcileError
 pub fn Config::seed(Self) -> UInt64
 pub fn Config::width(Self) -> Int
+pub fn Config::wire_bytes(Self) -> Int
 
 pub struct DecodeLimits {
   // private fields

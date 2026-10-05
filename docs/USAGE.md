@@ -10,6 +10,8 @@
 
 ## 普通同步
 
+可先用 `CapacityPlan::new(expected_differences, max_wire_bytes=..., seed=...)` 规划起始摘要和重试上限，再把 `initial()` 传给 snapshot、把 `max_width()` 传给 Policy。规划器在每个分带为每个预计差异预留一个单元，是起始容量启发式，不保证恢复成功；实际差异可能超过估计，仍需处理 Retry/FullTransfer。`Config::wire_bytes()` 给出精确 MRCL 帧大小，`smaller_than_full_ids(members)` 只比较摘要与原始 ID 数组的字节数，不计实际对象和网络开销。
+
 配置由双方协商，不接受对端随意指定无限制容量。`Config::new(width, seed=...)` 的 width 范围为 1..262144，实际总单元数为 3*width。不同配置不能相减。
 
 `Policy::new(max_width=..., max_differences=...)` 限制重试空间和单次 peeling 工作量。`DecodeLimits` 限制收到帧的宽度和成员数，默认 width <=65536、成员数 <=10000000。可依据可用内存进一步下调。这里限制帧内存和工作量，不替代传输层读取超时或并发连接预算。
