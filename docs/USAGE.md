@@ -6,7 +6,7 @@
 
 `Inventory::from_ids` 会去重，并构建精确 Map。`ids()`、`Plan::additions/removals()` 等返回数组副本；调用者修改这些数组不会修改库中的计划。快照包含独立的 sketch，后续改变 Inventory 不影响旧快照。
 
-需要不保存完整 ID 的流式数据库接入时，可按唯一记录扫描构建 `Sketch`；底层 sketch 不跟踪去重，重复插入、无效删除都可能形成无法恢复的差异。当前高层 Snapshot 从 Inventory 构建，尚不提供无 Map 的高层快照构建器。
+需要不保存完整 ID 的流式数据库接入时，可按唯一记录扫描构建 `Sketch`；底层 sketch 不跟踪去重，重复插入、无效删除都可能形成无法恢复的差异。高层 `Snapshot::from_sorted_ids(cursor, config, scope=..., epoch=..., max_members=...)` 支持直接扫描严格递增的 UInt64 游标，不建立完整 Map；重复或逆序 ID 会被拒绝，成员数超限会终止构建。除源游标外只需 O(width) 摘要内存。业务应保持扫描期间的数据库快照一致性。
 
 ## 普通同步
 

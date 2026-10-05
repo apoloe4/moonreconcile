@@ -145,6 +145,7 @@ pub fn Snapshot::encode(Self) -> Bytes
 pub fn Snapshot::encoded_size(Self) -> Int
 pub fn Snapshot::epoch(Self) -> UInt64
 pub fn Snapshot::fingerprint(Self) -> Fingerprint
+pub fn Snapshot::from_sorted_ids(Iter[UInt64], Config, scope? : UInt64, epoch? : UInt64, max_members? : Int) -> Self raise ReconcileError
 pub fn Snapshot::scope(Self) -> UInt64
 
 // Type aliases
