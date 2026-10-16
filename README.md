@@ -1,5 +1,12 @@
 # MoonReconcile：MoonBit 集合差异同步库
 
+**公开仓库与报名链接：** [https://github.com/apoloe4/moonreconcile](https://github.com/apoloe4/moonreconcile)。报名表的仓库链接栏请填写这个主页地址；`/commits/main` 是提交记录页面，不能用作仓库克隆地址。[申报书](docs/PROJECT_PROPOSAL.md) · [匿名访问核验记录](docs/ACCESS_VERIFICATION.md)。
+
+```sh
+git clone https://github.com/apoloe4/moonreconcile.git
+cd moonreconcile
+```
+
 两端都有大量记录、只有少数 ID 不同时，先交换紧凑摘要，再恢复双方缺少的 ID，减少全量清单传输。核心算法、协议处理、分区协商和测试均以 MoonBit 实现，无 JS 包装层、C FFI 或外部运行库依赖。
 
 **当前状态：0.1.0 实验版本。** 面向合作节点的集合同步；不是数据库、文件同步软件或已通过生产审计的安全协议。摘要格式是本项目自定义格式，不兼容 minisketch、Negentropy 或其他 IBLT 实现。

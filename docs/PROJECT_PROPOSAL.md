@@ -24,4 +24,6 @@
 
 **范围限制：** 仅同步 UInt64 ID 集合，不实现对象内容下载、认证网络、持久化数据库或业务冲突解决；实验版本需进一步真实负载验证。
 
-**仓库：** https://github.com/apoloe4/moonreconcile
+**公开仓库（报名表请填写此地址）：** https://github.com/apoloe4/moonreconcile
+
+**克隆与访问：** `git clone https://github.com/apoloe4/moonreconcile.git`。请勿将提交记录页 `/commits/main` 填入仓库地址栏；匿名访问与克隆核验见 docs/ACCESS_VERIFICATION.md。
