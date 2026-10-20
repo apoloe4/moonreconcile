@@ -1,4 +1,6 @@
-# MoonReconcile：MoonBit 集合差异同步库
+# MoonReconcile：MoonBit 集合差异摘要与恢复库
+
+**本文为现有版本的使用说明，不是项目申报书。** 报名材料请使用独立的[项目申报书](docs/PROJECT_PROPOSAL.md)；拟新增功能和验收条件见[下一阶段设计](docs/DESIGN_V0_2.md)。申报书中的规划不代表当前版本已支持。
 
 **公开仓库与报名链接：** [https://github.com/apoloe4/moonreconcile](https://github.com/apoloe4/moonreconcile)。报名表的仓库链接栏请填写这个主页地址；`/commits/main` 是提交记录页面，不能用作仓库克隆地址。[申报书](docs/PROJECT_PROPOSAL.md) · [匿名访问核验记录](docs/ACCESS_VERIFICATION.md)。
 
