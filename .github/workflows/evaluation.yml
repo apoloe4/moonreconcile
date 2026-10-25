@@ -1,0 +1,42 @@
+name: Reproducible evaluation
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - name: Evaluate MoonReconcile
+        run: |
+          mkdir -p results
+          moon version --all > results/toolchain.txt
+          moon run examples/evaluate --target native --release -- --full > results/core.csv
+          moon run examples/evaluate --target native --release -- --sessions > results/sessions.csv
+      - name: Build pinned minisketch evaluation dependency
+        run: |
+          git clone https://github.com/bitcoin-core/minisketch /tmp/minisketch
+          git -C /tmp/minisketch checkout a12f5de1c96e21d76f64bc647ae4f65e4fc1b636
+          cd /tmp/minisketch
+          autoreconf -i
+          ./configure --disable-benchmark --disable-tests --enable-static --disable-shared
+          make -j2
+      - name: Compare exact differences
+        run: |
+          g++ -std=c++11 -O2 tools/minisketch_compare.cpp -I/tmp/minisketch/include /tmp/minisketch/.libs/libminisketch.a -o /tmp/minisketch-compare
+          /tmp/minisketch-compare > results/minisketch.csv
+          node tools/summarize-evaluation.mjs results/core.csv results/sessions.csv results/minisketch.csv > results/REPORT.md
+          cat results/REPORT.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reconciliation-evaluation
+          path: results/
