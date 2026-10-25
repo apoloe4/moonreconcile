@@ -134,6 +134,39 @@ pub struct Policy {
 }
 pub fn Policy::new(max_width? : Int, max_differences? : Int) -> Self raise ReconcileError
 
+pub struct Session {
+  // private fields
+}
+pub fn Session::decode_steps(Self) -> Int
+pub fn Session::new(Snapshot, UInt64, SessionLimits) -> Self raise ReconcileError
+pub fn Session::receive(Self, Snapshot, Bytes) -> SessionState raise ReconcileError
+pub fn Session::received_bytes(Self) -> Int64
+pub fn Session::record_sent(Self, Bytes) -> SessionState raise ReconcileError
+pub fn Session::rounds(Self) -> Int
+pub fn Session::sent_bytes(Self) -> Int64
+pub fn Session::state(Self) -> SessionState
+
+pub struct SessionLimits {
+  // private fields
+}
+pub fn SessionLimits::new(max_rounds? : Int, max_bytes? : Int64, max_steps? : Int, max_width? : Int, max_members? : Int) -> Self raise ReconcileError
+
+pub enum SessionState {
+  Awaiting(Config)
+  Complete(Plan)
+  Stopped(SessionStop)
+}
+
+pub enum SessionStop {
+  ByteLimit
+  RoundLimit
+  WorkLimit
+  WidthLimit
+  SnapshotChanged
+  ProtocolError
+} derive(Eq, @debug.Debug)
+pub fn SessionStop::label(Self) -> String
+
 pub struct Sketch {
   // private fields
 }

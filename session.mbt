@@ -19,25 +19,7 @@ pub fn reconcile(
   let difference = remote.sketch.subtract(source.sketch)
   let report = difference.decode(budget=policy.max_differences)
   if report.complete() {
-    let mut expected = source.fingerprint
-    for id in report.negative {
-      expected = fingerprint_add(expected, id, -1)
-    }
-    for id in report.positive {
-      expected = fingerprint_add(expected, id, 1)
-    }
-    if expected != remote.fingerprint {
-      raise VerificationFailed
-    }
-    Ready({
-      scope: source.scope,
-      source_epoch: source.epoch,
-      target_epoch: remote.epoch,
-      source: source.fingerprint,
-      target: remote.fingerprint,
-      add: report.positive.copy(),
-      remove: report.negative.copy(),
-    })
+    Ready(validated_plan(source, remote, report))
   } else if config.width < policy.max_width &&
     report.steps < policy.max_differences {
     let width = if config.width * 2 > policy.max_width {
@@ -48,6 +30,36 @@ pub fn reconcile(
     Retry(Config::new(width, seed=config.seed))
   } else {
     FullTransfer(report.residual)
+  }
+}
+
+///|
+fn validated_plan(
+  source : Snapshot,
+  remote : Snapshot,
+  report : DecodeReport,
+) -> Plan raise ReconcileError {
+  if !report.complete() {
+    raise InvalidPlan("partial recovery")
+  }
+  let mut expected = source.fingerprint
+  for id in report.negative {
+    expected = fingerprint_add(expected, id, -1)
+  }
+  for id in report.positive {
+    expected = fingerprint_add(expected, id, 1)
+  }
+  if expected != remote.fingerprint {
+    raise VerificationFailed
+  }
+  {
+    scope: source.scope,
+    source_epoch: source.epoch,
+    target_epoch: remote.epoch,
+    source: source.fingerprint,
+    target: remote.fingerprint,
+    add: report.positive.copy(),
+    remove: report.negative.copy(),
   }
 }
 
