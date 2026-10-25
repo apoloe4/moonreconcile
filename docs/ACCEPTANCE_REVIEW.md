@@ -18,7 +18,7 @@
 
 - 本地隔离安装官方 MoonBit 0.1.20261023 / moonc 0.10.17；未替换系统原工具链。修正新格式要求的 Int32 和可选参数写法，更新生成接口。
 - wasm-gc、wasm、JS各60项测试通过，检查启用 deny-warn；格式和接口已重新生成。Native 构建/测试由Ubuntu CI验证，本机没有C编译器。
-- GitHub [首次新增功能检查](https://github.com/apoloe4/moonreconcile/actions/runs/40157127139)：四目标功能测试成功，style因旧格式失败；后续提交修复格式后必须重新通过，不能把该次整体运行描述成成功。
+- GitHub [首次新增功能检查](https://github.com/apoloe4/moonreconcile/actions/runs/40157127139)：四目标功能测试成功，style因旧格式失败；已在后续提交修复格式。[运行40196667304](https://github.com/apoloe4/moonreconcile/actions/runs/40196667304)的四目标check/build/test/示例及style全部通过；[复跑评估40196667378](https://github.com/apoloe4/moonreconcile/actions/runs/40196667378)亦成功。
 - [完整评估运行](https://github.com/apoloe4/moonreconcile/actions/runs/40157127172)成功；报告与CSV已归档。失败样本保留，无虚构结果或只挑选成功输入。
 - 根目录Apache-2.0；[NOTICE](../NOTICE.md)说明IBLT、混合、CRC、AI辅助和minisketch对照的来源。运行时没有第三方C/C++实现；对照程序仅在CI临时目录链接上游MIT库。
 - [最新生态查重](DUPLICATION_REVIEW.md)保留查询结果、候选版本与边界，不把无命中当成完全不存在。
