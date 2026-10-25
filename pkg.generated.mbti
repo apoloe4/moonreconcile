@@ -25,16 +25,16 @@ pub(all) suberror ReconcileError {
 pub struct BucketOffer {
   // private fields
 }
-pub fn BucketOffer::new(Int, Layout, Snapshot) -> Self raise ReconcileError
+pub fn BucketOffer::new(Int32, Layout, Snapshot) -> Self raise ReconcileError
 pub fn BucketOffer::snapshot(Self) -> Snapshot
 
 pub struct CapacityPlan {
   // private fields
 }
 pub fn CapacityPlan::initial(Self) -> Config
-pub fn CapacityPlan::max_width(Self) -> Int
-pub fn CapacityPlan::new(Int, max_wire_bytes? : Int, seed? : UInt64) -> Self raise ReconcileError
-pub fn CapacityPlan::smaller_than_full_ids(Self, Int) -> Bool raise ReconcileError
+pub fn CapacityPlan::max_width(Self) -> Int32
+pub fn CapacityPlan::new(Int32, max_wire_bytes? : Int32, seed? : UInt64) -> Self raise ReconcileError
+pub fn CapacityPlan::smaller_than_full_ids(Self, Int32) -> Bool raise ReconcileError
 
 type Cell derive(@debug.Debug)
 
@@ -43,22 +43,22 @@ pub struct Collector {
 }
 pub fn Collector::accept(Self, BucketOffer, BucketOffer, Policy) -> Outcome raise ReconcileError
 pub fn Collector::finish(Self) -> Plan raise ReconcileError
-pub fn Collector::new(Manifest, Manifest, max_changes? : Int) -> Self raise ReconcileError
-pub fn Collector::pending(Self) -> Array[Int]
+pub fn Collector::new(Manifest, Manifest, max_changes? : Int32) -> Self raise ReconcileError
+pub fn Collector::pending(Self) -> Array[Int32]
 
 pub struct Config {
   // private fields
 } derive(Eq, @debug.Debug)
-pub fn Config::cells(Self) -> Int
-pub fn Config::new(Int, seed? : UInt64) -> Self raise ReconcileError
+pub fn Config::cells(Self) -> Int32
+pub fn Config::new(Int32, seed? : UInt64) -> Self raise ReconcileError
 pub fn Config::seed(Self) -> UInt64
-pub fn Config::width(Self) -> Int
-pub fn Config::wire_bytes(Self) -> Int
+pub fn Config::width(Self) -> Int32
+pub fn Config::wire_bytes(Self) -> Int32
 
 pub struct DecodeLimits {
   // private fields
 }
-pub fn DecodeLimits::new(max_width? : Int, max_members? : Int) -> Self raise ReconcileError
+pub fn DecodeLimits::new(max_width? : Int32, max_members? : Int32) -> Self raise ReconcileError
 
 pub struct DecodeReport {
   // private fields
@@ -66,18 +66,18 @@ pub struct DecodeReport {
 pub fn DecodeReport::complete(Self) -> Bool
 pub fn DecodeReport::negative(Self) -> Array[UInt64]
 pub fn DecodeReport::positive(Self) -> Array[UInt64]
-pub fn DecodeReport::residual_cells(Self) -> Int
-pub fn DecodeReport::steps(Self) -> Int
+pub fn DecodeReport::residual_cells(Self) -> Int32
+pub fn DecodeReport::steps(Self) -> Int32
 
 pub struct Fingerprint {
   // private fields
 } derive(Eq, @debug.Debug)
-pub fn Fingerprint::count(Self) -> Int
+pub fn Fingerprint::count(Self) -> Int32
 
 pub struct FrameReader {
   // private fields
 }
-pub fn FrameReader::buffered_bytes(Self) -> Int
+pub fn FrameReader::buffered_bytes(Self) -> Int32
 pub fn FrameReader::feed(Self, Bytes) -> Snapshot? raise ReconcileError
 pub fn FrameReader::finish(Self) -> Unit raise ReconcileError
 pub fn FrameReader::new(DecodeLimits) -> Self
@@ -87,8 +87,8 @@ pub struct Inventory {
   // private fields
 }
 pub fn Inventory::apply(Self, Plan) -> Self raise ReconcileError
-pub fn Inventory::bucket_offer(Self, Layout, Int, Config) -> BucketOffer raise ReconcileError
-pub fn Inventory::bucket_offers(Self, Layout, Array[Int], Config, max_cells? : Int) -> Array[BucketOffer] raise ReconcileError
+pub fn Inventory::bucket_offer(Self, Layout, Int32, Config) -> BucketOffer raise ReconcileError
+pub fn Inventory::bucket_offers(Self, Layout, Array[Int32], Config, max_cells? : Int32) -> Array[BucketOffer] raise ReconcileError
 pub fn Inventory::contains(Self, UInt64) -> Bool
 pub fn Inventory::epoch(Self) -> UInt64
 pub fn Inventory::fingerprint(Self) -> Fingerprint
@@ -103,15 +103,15 @@ pub fn Inventory::snapshot(Self, Config) -> Snapshot raise ReconcileError
 pub struct Layout {
   // private fields
 } derive(Eq, @debug.Debug)
-pub fn Layout::bucket(Self, UInt64) -> Int
-pub fn Layout::buckets(Self) -> Int
-pub fn Layout::new(Int, seed? : UInt64) -> Self raise ReconcileError
+pub fn Layout::bucket(Self, UInt64) -> Int32
+pub fn Layout::buckets(Self) -> Int32
+pub fn Layout::new(Int32, seed? : UInt64) -> Self raise ReconcileError
 
 pub struct Manifest {
   // private fields
 }
-pub fn Manifest::changed_buckets(Self, Self) -> Array[Int] raise ReconcileError
-pub fn Manifest::decode(Bytes, max_buckets? : Int, max_members? : Int) -> Self raise ReconcileError
+pub fn Manifest::changed_buckets(Self, Self) -> Array[Int32] raise ReconcileError
+pub fn Manifest::decode(Bytes, max_buckets? : Int32, max_members? : Int32) -> Self raise ReconcileError
 pub fn Manifest::encode(Self) -> Bytes
 pub fn Manifest::epoch(Self) -> UInt64
 pub fn Manifest::fingerprint(Self) -> Fingerprint
@@ -119,7 +119,7 @@ pub fn Manifest::fingerprint(Self) -> Fingerprint
 pub enum Outcome {
   Ready(Plan)
   Retry(Config)
-  FullTransfer(Int)
+  FullTransfer(Int32)
 }
 
 pub struct Plan {
@@ -132,24 +132,24 @@ pub fn Plan::target_epoch(Self) -> UInt64
 pub struct Policy {
   // private fields
 }
-pub fn Policy::new(max_width? : Int, max_differences? : Int) -> Self raise ReconcileError
+pub fn Policy::new(max_width? : Int32, max_differences? : Int32) -> Self raise ReconcileError
 
 pub struct Session {
   // private fields
 }
-pub fn Session::decode_steps(Self) -> Int
+pub fn Session::decode_steps(Self) -> Int32
 pub fn Session::new(Snapshot, UInt64, SessionLimits) -> Self raise ReconcileError
 pub fn Session::receive(Self, Snapshot, Bytes) -> SessionState raise ReconcileError
 pub fn Session::received_bytes(Self) -> Int64
 pub fn Session::record_sent(Self, Bytes) -> SessionState raise ReconcileError
-pub fn Session::rounds(Self) -> Int
+pub fn Session::rounds(Self) -> Int32
 pub fn Session::sent_bytes(Self) -> Int64
 pub fn Session::state(Self) -> SessionState
 
 pub struct SessionLimits {
   // private fields
 }
-pub fn SessionLimits::new(max_rounds? : Int, max_bytes? : Int64, max_steps? : Int, max_width? : Int, max_members? : Int) -> Self raise ReconcileError
+pub fn SessionLimits::new(max_rounds? : Int32, max_bytes? : Int64, max_steps? : Int32, max_width? : Int32, max_members? : Int32) -> Self raise ReconcileError
 
 pub enum SessionState {
   Awaiting(Config)
@@ -172,7 +172,7 @@ pub struct Sketch {
 }
 pub fn Sketch::config(Self) -> Config
 pub fn Sketch::copy(Self) -> Self
-pub fn Sketch::decode(Self, budget? : Int) -> DecodeReport raise ReconcileError
+pub fn Sketch::decode(Self, budget? : Int32) -> DecodeReport raise ReconcileError
 pub fn Sketch::erase(Self, UInt64) -> Unit raise ReconcileError
 pub fn Sketch::insert(Self, UInt64) -> Unit raise ReconcileError
 pub fn Sketch::new(Config) -> Self
@@ -184,10 +184,10 @@ pub struct Snapshot {
 pub fn Snapshot::config(Self) -> Config
 pub fn Snapshot::decode(Bytes, DecodeLimits) -> Self raise ReconcileError
 pub fn Snapshot::encode(Self) -> Bytes
-pub fn Snapshot::encoded_size(Self) -> Int
+pub fn Snapshot::encoded_size(Self) -> Int32
 pub fn Snapshot::epoch(Self) -> UInt64
 pub fn Snapshot::fingerprint(Self) -> Fingerprint
-pub fn Snapshot::from_sorted_ids(Iter[UInt64], Config, scope? : UInt64, epoch? : UInt64, max_members? : Int) -> Self raise ReconcileError
+pub fn Snapshot::from_sorted_ids(Iter[UInt64], Config, scope? : UInt64, epoch? : UInt64, max_members? : Int32) -> Self raise ReconcileError
 pub fn Snapshot::scope(Self) -> UInt64
 
 // Type aliases

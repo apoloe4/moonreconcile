@@ -1,5 +1,5 @@
 ///|
-fn exchange(name : String, width : Int, max_bytes : Int64) -> Unit raise {
+fn exchange(name : String, width : Int32, max_bytes : Int64) -> Unit raise {
   let source = @reconcile.Inventory::from_ids(
     [0UL, 1UL, 2UL],
     scope=42UL,

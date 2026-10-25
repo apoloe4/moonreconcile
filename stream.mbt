@@ -4,7 +4,7 @@
 pub struct FrameReader {
   priv limits : DecodeLimits
   priv bytes : Array[Byte]
-  priv mut expected : Int?
+  priv mut expected : Int32?
   priv mut failed : Bool
   priv mut finished : Bool
 }
@@ -15,7 +15,7 @@ pub fn FrameReader::new(limits : DecodeLimits) -> FrameReader {
 }
 
 ///|
-pub fn FrameReader::buffered_bytes(self : FrameReader) -> Int {
+pub fn FrameReader::buffered_bytes(self : FrameReader) -> Int32 {
   self.bytes.length()
 }
 

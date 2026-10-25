@@ -5,9 +5,9 @@
 pub fn Snapshot::from_sorted_ids(
   ids : Iter[UInt64],
   config : Config,
-  scope? : UInt64 = 0UL,
-  epoch? : UInt64 = 0UL,
-  max_members? : Int = 10000000,
+  scope~ : UInt64 = 0UL,
+  epoch~ : UInt64 = 0UL,
+  max_members~ : Int32 = 10000000,
 ) -> Snapshot raise ReconcileError {
   if max_members < 0 {
     raise InvalidConfig("negative streaming member limit")

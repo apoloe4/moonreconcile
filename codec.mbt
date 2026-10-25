@@ -1,14 +1,14 @@
 ///|
 /// Per-call limits are checked before allocating the cell array.
 pub struct DecodeLimits {
-  priv max_width : Int
-  priv max_members : Int
+  priv max_width : Int32
+  priv max_members : Int32
 }
 
 ///|
 pub fn DecodeLimits::new(
-  max_width? : Int = 65536,
-  max_members? : Int = 10000000,
+  max_width~ : Int32 = 65536,
+  max_members~ : Int32 = 10000000,
 ) -> DecodeLimits raise ReconcileError {
   if max_width < 1 || max_width > 262144 || max_members < 0 {
     raise InvalidConfig("invalid wire decode limits")
@@ -17,7 +17,7 @@ pub fn DecodeLimits::new(
 }
 
 ///|
-fn put_u32(out : Array[Byte], value : UInt) -> Unit {
+fn put_u32(out : Array[Byte], value : UInt32) -> Unit {
   for i = 0; i < 4; i = i + 1 {
     out.push((value >> (i * 8)).to_byte())
   }
@@ -31,7 +31,7 @@ fn put_u64(out : Array[Byte], value : UInt64) -> Unit {
 }
 
 ///|
-fn get_u32(data : Bytes, offset : Int) -> UInt {
+fn get_u32(data : Bytes, offset : Int32) -> UInt32 {
   let mut value = 0U
   for i = 0; i < 4; i = i + 1 {
     value = value | (data[offset + i].to_uint() << (8 * i))
@@ -40,7 +40,7 @@ fn get_u32(data : Bytes, offset : Int) -> UInt {
 }
 
 ///|
-fn get_u64(data : Bytes, offset : Int) -> UInt64 {
+fn get_u64(data : Bytes, offset : Int32) -> UInt64 {
   let mut value = 0UL
   for i = 0; i < 8; i = i + 1 {
     value = value | (data[offset + i].to_uint64() << (8 * i))
@@ -50,7 +50,7 @@ fn get_u64(data : Bytes, offset : Int) -> UInt64 {
 
 ///|
 // IEEE CRC-32 detects accidental damage only, not a malicious peer.
-fn crc32(data : Bytes, end : Int) -> UInt {
+fn crc32(data : Bytes, end : Int32) -> UInt32 {
   let mut crc = 0xffffffffU
   for i = 0; i < end; i = i + 1 {
     crc = crc ^ data[i].to_uint()
@@ -84,7 +84,7 @@ pub fn Snapshot::encode(self : Snapshot) -> Bytes {
 }
 
 ///|
-pub fn Snapshot::encoded_size(self : Snapshot) -> Int {
+pub fn Snapshot::encoded_size(self : Snapshot) -> Int32 {
   68 + self.sketch.config.cells() * 20
 }
 

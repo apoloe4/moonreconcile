@@ -12,7 +12,7 @@ fn check_key(key : UInt64, seed : UInt64) -> UInt64 {
 }
 
 ///|
-fn positions(key : UInt64, config : Config) -> Array[Int] {
+fn positions(key : UInt64, config : Config) -> Array[Int32] {
   let salts = [0x9e3779b97f4a7c15UL, 0x3c6ef372fe94f82aUL, 0xdaa66d2c7ddef743UL]
   Array::makei(3, fn(i) {
     (mix(key ^ config.seed ^ salts[i]) % config.width.to_uint64()).to_int() +
@@ -26,7 +26,7 @@ fn empty_fingerprint() -> Fingerprint {
 }
 
 ///|
-fn fingerprint_add(fp : Fingerprint, key : UInt64, sign : Int) -> Fingerprint {
+fn fingerprint_add(fp : Fingerprint, key : UInt64, sign : Int32) -> Fingerprint {
   let h = mix(key ^ 0xa0761d6478bd642fUL)
   {
     count: fp.count + sign,

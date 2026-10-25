@@ -24,8 +24,8 @@ pub fn Manifest::encode(self : Manifest) -> Bytes {
 ///|
 pub fn Manifest::decode(
   data : Bytes,
-  max_buckets? : Int = 4096,
-  max_members? : Int = 10000000,
+  max_buckets~ : Int32 = 4096,
+  max_members~ : Int32 = 10000000,
 ) -> Manifest raise ReconcileError {
   if max_buckets < 1 || max_buckets > 4096 || max_members < 0 {
     raise InvalidConfig("invalid manifest limits")

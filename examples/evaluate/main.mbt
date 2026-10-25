@@ -1,13 +1,13 @@
 ///|
 // Injective over all UInt64 inputs; the finite input domain here excludes zero.
 // Use the same integer formula in the independent minisketch driver.
-fn identifier(index : Int, seed : Int) -> UInt64 {
+fn identifier(index : Int32, seed : Int32) -> UInt64 {
   (index.to_uint64() + 1UL + seed.to_uint64() * 1000003UL) *
   6364136223846793005UL
 }
 
 ///|
-fn scenario(n : Int, d : Int, ratio : Int, seed : Int) -> Unit raise {
+fn scenario(n : Int32, d : Int32, ratio : Int32, seed : Int32) -> Unit raise {
   let width = if d == 0 { 1 } else { d * ratio / 2 }
   let config = @reconcile.Config::new(width, seed=seed.to_uint64())
   let build_start = @bench.monotonic_clock_start()

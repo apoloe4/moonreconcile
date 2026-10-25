@@ -28,7 +28,7 @@ pub fn Sketch::copy(self : Sketch) -> Sketch {
 fn Sketch::update(
   self : Sketch,
   key : UInt64,
-  sign : Int,
+  sign : Int32,
 ) -> Unit raise ReconcileError {
   let indexes = positions(key, self.config)
   for i in indexes {
@@ -84,7 +84,7 @@ pub fn Sketch::subtract(
 }
 
 ///|
-fn Sketch::pure(self : Sketch, i : Int) -> Bool {
+fn Sketch::pure(self : Sketch, i : Int32) -> Bool {
   let cell = self.cells[i]
   (cell.count == 1 || cell.count == -1) &&
   cell.check == check_key(cell.key, self.config.seed) &&
@@ -96,13 +96,13 @@ fn Sketch::pure(self : Sketch, i : Int) -> Bool {
 /// The queue has at most cells + 3*budget entries; stale entries are rechecked.
 pub fn Sketch::decode(
   self : Sketch,
-  budget? : Int = 100000,
+  budget~ : Int32 = 100000,
 ) -> DecodeReport raise ReconcileError {
   if budget < 0 || budget > 1000000 {
     raise InvalidConfig("invalid decode budget")
   }
   let work = self.copy()
-  let queue : Array[Int] = []
+  let queue : Array[Int32] = []
   for i = 0; i < work.cells.length(); i = i + 1 {
     if work.pure(i) {
       queue.push(i)

@@ -2,20 +2,20 @@
 /// Limits apply to one observer's actual sent+received MRCL frames, across retries.
 /// Transport headers, payload downloads and full-transfer fallback are separate.
 pub struct SessionLimits {
-  priv max_rounds : Int
+  priv max_rounds : Int32
   priv max_bytes : Int64
-  priv max_steps : Int
-  priv max_width : Int
-  priv max_members : Int
+  priv max_steps : Int32
+  priv max_width : Int32
+  priv max_members : Int32
 }
 
 ///|
 pub fn SessionLimits::new(
-  max_rounds? : Int = 8,
-  max_bytes? : Int64 = 8388608L,
-  max_steps? : Int = 100000,
-  max_width? : Int = 65536,
-  max_members? : Int = 10000000,
+  max_rounds~ : Int32 = 8,
+  max_bytes~ : Int64 = 8388608L,
+  max_steps~ : Int32 = 100000,
+  max_width~ : Int32 = 65536,
+  max_members~ : Int32 = 10000000,
 ) -> SessionLimits raise ReconcileError {
   // A 1 TiB ceiling leaves ample Int64 headroom even for an over-budget frame.
   if max_rounds < 1 ||
@@ -75,10 +75,10 @@ pub struct Session {
   priv mut target_fingerprint : Fingerprint?
   priv mut state : SessionState
   priv frames : Array[Bytes]
-  priv mut rounds : Int
+  priv mut rounds : Int32
   priv mut sent : Int64
   priv mut received : Int64
-  priv mut steps : Int
+  priv mut steps : Int32
 }
 
 ///|
@@ -114,7 +114,7 @@ pub fn Session::state(self : Session) -> SessionState {
 }
 
 ///|
-pub fn Session::rounds(self : Session) -> Int {
+pub fn Session::rounds(self : Session) -> Int32 {
   self.rounds
 }
 
@@ -129,7 +129,7 @@ pub fn Session::received_bytes(self : Session) -> Int64 {
 }
 
 ///|
-pub fn Session::decode_steps(self : Session) -> Int {
+pub fn Session::decode_steps(self : Session) -> Int32 {
   self.steps
 }
 

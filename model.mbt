@@ -12,14 +12,14 @@ pub(all) suberror ReconcileError {
 ///|
 /// Three disjoint hash bands, each of `width` cells. Immutable configuration.
 pub struct Config {
-  priv width : Int
+  priv width : Int32
   priv seed : UInt64
 } derive(Eq, Debug)
 
 ///|
 pub fn Config::new(
-  width : Int,
-  seed? : UInt64 = 1UL,
+  width : Int32,
+  seed~ : UInt64 = 1UL,
 ) -> Config raise ReconcileError {
   if width < 1 || width > 262144 {
     raise InvalidConfig("width must be between 1 and 262144")
@@ -28,7 +28,7 @@ pub fn Config::new(
 }
 
 ///|
-pub fn Config::width(self : Config) -> Int {
+pub fn Config::width(self : Config) -> Int32 {
   self.width
 }
 
@@ -38,26 +38,26 @@ pub fn Config::seed(self : Config) -> UInt64 {
 }
 
 ///|
-pub fn Config::cells(self : Config) -> Int {
+pub fn Config::cells(self : Config) -> Int32 {
   self.width * 3
 }
 
 ///|
 /// Commutative, non-cryptographic set fingerprint. This is not authentication.
 pub struct Fingerprint {
-  priv count : Int
+  priv count : Int32
   priv sum : UInt64
   priv xor : UInt64
 } derive(Eq, Debug)
 
 ///|
-pub fn Fingerprint::count(self : Fingerprint) -> Int {
+pub fn Fingerprint::count(self : Fingerprint) -> Int32 {
   self.count
 }
 
 ///|
 struct Cell {
-  mut count : Int
+  mut count : Int32
   mut key : UInt64
   mut check : UInt64
 } derive(Debug)
@@ -75,8 +75,8 @@ pub struct Sketch {
 pub struct DecodeReport {
   priv positive : Array[UInt64]
   priv negative : Array[UInt64]
-  priv residual : Int
-  priv steps : Int
+  priv residual : Int32
+  priv steps : Int32
 }
 
 ///|
@@ -95,12 +95,12 @@ pub fn DecodeReport::negative(self : DecodeReport) -> Array[UInt64] {
 }
 
 ///|
-pub fn DecodeReport::residual_cells(self : DecodeReport) -> Int {
+pub fn DecodeReport::residual_cells(self : DecodeReport) -> Int32 {
   self.residual
 }
 
 ///|
-pub fn DecodeReport::steps(self : DecodeReport) -> Int {
+pub fn DecodeReport::steps(self : DecodeReport) -> Int32 {
   self.steps
 }
 
@@ -164,19 +164,19 @@ pub fn Plan::target_epoch(self : Plan) -> UInt64 {
 pub enum Outcome {
   Ready(Plan)
   Retry(Config)
-  FullTransfer(Int)
+  FullTransfer(Int32)
 }
 
 ///|
 pub struct Policy {
-  priv max_width : Int
-  priv max_differences : Int
+  priv max_width : Int32
+  priv max_differences : Int32
 }
 
 ///|
 pub fn Policy::new(
-  max_width? : Int = 65536,
-  max_differences? : Int = 100000,
+  max_width~ : Int32 = 65536,
+  max_differences~ : Int32 = 100000,
 ) -> Policy raise ReconcileError {
   if max_width < 1 ||
     max_width > 262144 ||

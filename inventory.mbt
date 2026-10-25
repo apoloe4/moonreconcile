@@ -9,8 +9,8 @@ pub struct Inventory {
 
 ///|
 pub fn Inventory::new(
-  scope? : UInt64 = 0UL,
-  epoch? : UInt64 = 0UL,
+  scope~ : UInt64 = 0UL,
+  epoch~ : UInt64 = 0UL,
 ) -> Inventory {
   { scope, epoch, keys: Map([]), fingerprint: empty_fingerprint(), }
 }
@@ -19,8 +19,8 @@ pub fn Inventory::new(
 /// Initial duplicates are discarded. All UInt64 values, including zero, are valid IDs.
 pub fn Inventory::from_ids(
   ids : Array[UInt64],
-  scope? : UInt64 = 0UL,
-  epoch? : UInt64 = 0UL,
+  scope~ : UInt64 = 0UL,
+  epoch~ : UInt64 = 0UL,
 ) -> Inventory {
   let inventory = Inventory::new(scope~, epoch~)
   for id in ids {

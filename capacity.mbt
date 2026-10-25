@@ -3,14 +3,14 @@
 /// Allocate one cell per estimated difference in each of the three bands.
 pub struct CapacityPlan {
   priv initial : Config
-  priv max_width : Int
+  priv max_width : Int32
 }
 
 ///|
 pub fn CapacityPlan::new(
-  expected_differences : Int,
-  max_wire_bytes? : Int = 3932228,
-  seed? : UInt64 = 1UL,
+  expected_differences : Int32,
+  max_wire_bytes~ : Int32 = 3932228,
+  seed~ : UInt64 = 1UL,
 ) -> CapacityPlan raise ReconcileError {
   if expected_differences < 0 {
     raise InvalidConfig("negative difference estimate")
@@ -34,12 +34,12 @@ pub fn CapacityPlan::initial(self : CapacityPlan) -> Config {
 
 ///|
 /// Maximum retry width that still fits the supplied snapshot wire budget.
-pub fn CapacityPlan::max_width(self : CapacityPlan) -> Int {
+pub fn CapacityPlan::max_width(self : CapacityPlan) -> Int32 {
   self.max_width
 }
 
 ///|
-pub fn Config::wire_bytes(self : Config) -> Int {
+pub fn Config::wire_bytes(self : Config) -> Int32 {
   68 + self.cells() * 20
 }
 
@@ -47,7 +47,7 @@ pub fn Config::wire_bytes(self : Config) -> Int {
 /// Compare only summary vs raw UInt64 ID bytes, excluding protocol/payload costs.
 pub fn CapacityPlan::smaller_than_full_ids(
   self : CapacityPlan,
-  members : Int,
+  members : Int32,
 ) -> Bool raise ReconcileError {
   if members < 0 {
     raise InvalidConfig("negative full-set member count")

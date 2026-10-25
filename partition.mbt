@@ -2,14 +2,14 @@
 /// Hash partitioning permits exchanging sketches only for changed buckets.
 /// Both peers must negotiate identical layout; seeds are not secret keys.
 pub struct Layout {
-  priv buckets : Int
+  priv buckets : Int32
   priv seed : UInt64
 } derive(Eq, Debug)
 
 ///|
 pub fn Layout::new(
-  buckets : Int,
-  seed? : UInt64 = 17UL,
+  buckets : Int32,
+  seed~ : UInt64 = 17UL,
 ) -> Layout raise ReconcileError {
   if buckets < 1 || buckets > 4096 {
     raise InvalidConfig("bucket count must be 1..4096")
@@ -18,12 +18,12 @@ pub fn Layout::new(
 }
 
 ///|
-pub fn Layout::buckets(self : Layout) -> Int {
+pub fn Layout::buckets(self : Layout) -> Int32 {
   self.buckets
 }
 
 ///|
-pub fn Layout::bucket(self : Layout, key : UInt64) -> Int {
+pub fn Layout::bucket(self : Layout, key : UInt64) -> Int32 {
   (mix(key ^ self.seed) % self.buckets.to_uint64()).to_int()
 }
 
@@ -67,11 +67,11 @@ pub fn Inventory::manifest(self : Inventory, layout : Layout) -> Manifest {
 pub fn Manifest::changed_buckets(
   self : Manifest,
   remote : Manifest,
-) -> Array[Int] raise ReconcileError {
+) -> Array[Int32] raise ReconcileError {
   if self.scope != remote.scope || self.layout != remote.layout {
     raise Incompatible("manifest scope or partition layout mismatch")
   }
-  let changed : Array[Int] = []
+  let changed : Array[Int32] = []
   for i = 0; i < self.layout.buckets; i = i + 1 {
     if self.fingerprints[i] != remote.fingerprints[i] {
       changed.push(i)
@@ -82,7 +82,7 @@ pub fn Manifest::changed_buckets(
 
 ///|
 pub struct BucketOffer {
-  priv index : Int
+  priv index : Int32
   priv layout : Layout
   priv snapshot : Snapshot
 }
@@ -95,7 +95,7 @@ pub fn BucketOffer::snapshot(self : BucketOffer) -> Snapshot {
 ///|
 /// Reuses a decoded snapshot; its fingerprint and routing are checked by Collector.
 pub fn BucketOffer::new(
-  index : Int,
+  index : Int32,
   layout : Layout,
   snapshot : Snapshot,
 ) -> BucketOffer raise ReconcileError {
@@ -111,7 +111,7 @@ pub fn BucketOffer::new(
 pub fn Inventory::bucket_offer(
   self : Inventory,
   layout : Layout,
-  index : Int,
+  index : Int32,
   config : Config,
 ) -> BucketOffer raise ReconcileError {
   if index < 0 || index >= layout.buckets {
@@ -137,9 +137,9 @@ pub fn Inventory::bucket_offer(
 pub fn Inventory::bucket_offers(
   self : Inventory,
   layout : Layout,
-  indexes : Array[Int],
+  indexes : Array[Int32],
   config : Config,
-  max_cells? : Int = 1000000,
+  max_cells~ : Int32 = 1000000,
 ) -> Array[BucketOffer] raise ReconcileError {
   if max_cells < 0 ||
     indexes.length().to_int64() * config.cells().to_int64() >
@@ -147,7 +147,7 @@ pub fn Inventory::bucket_offers(
     raise LimitExceeded("aggregate bucket sketch allocation")
   }
   let offers : Array[BucketOffer] = []
-  let lookup : Map[Int, Int] = Map([])
+  let lookup : Map[Int32, Int32] = Map([])
   for index in indexes {
     if index < 0 || index >= layout.buckets || lookup.contains(index) {
       raise InvalidConfig("duplicate or invalid bucket request")
@@ -182,17 +182,17 @@ pub fn Inventory::bucket_offers(
 pub struct Collector {
   priv source : Manifest
   priv target : Manifest
-  priv pending : Array[Int]
-  priv plans : Map[Int, Plan]
-  priv max_changes : Int
-  priv mut accepted_changes : Int
+  priv pending : Array[Int32]
+  priv plans : Map[Int32, Plan]
+  priv max_changes : Int32
+  priv mut accepted_changes : Int32
 }
 
 ///|
 pub fn Collector::new(
   source : Manifest,
   target : Manifest,
-  max_changes? : Int = 100000,
+  max_changes~ : Int32 = 100000,
 ) -> Collector raise ReconcileError {
   if max_changes < 0 || max_changes > 1000000 {
     raise InvalidConfig("invalid aggregate change budget")
@@ -208,7 +208,7 @@ pub fn Collector::new(
 }
 
 ///|
-pub fn Collector::pending(self : Collector) -> Array[Int] {
+pub fn Collector::pending(self : Collector) -> Array[Int32] {
   self.pending.filter(fn(i) { !self.plans.contains(i) })
 }
 

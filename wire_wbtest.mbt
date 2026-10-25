@@ -1,5 +1,5 @@
 ///|
-fn damage(data : Bytes, index : Int, value : Byte) -> Bytes {
+fn damage(data : Bytes, index : Int32, value : Byte) -> Bytes {
   let bytes = data.to_array()
   bytes[index] = value
   Bytes::from_array(bytes)
