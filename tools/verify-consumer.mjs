@@ -28,7 +28,7 @@ fs.writeFileSync(path.join(directory, 'main.mbt'), `fn main {
   } catch { e => abort(e.to_string()) }
 }
 `);
-for (const args of [['update'], ['check', '--deny-warn'], ['run', '--target', 'js']]) {
+for (const args of [['update'], ['check', '--deny-warn'], ['run', '.', '--target', 'js']]) {
   const result = spawnSync('moon', args, { cwd: directory, env: process.env, stdio: 'inherit' });
   if (result.error) throw result.error;
   if (result.status !== 0) process.exit(result.status ?? 1);

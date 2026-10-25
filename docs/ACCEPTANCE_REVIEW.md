@@ -10,7 +10,7 @@
 | 累计预算控制 | exchange.mbt，字节/轮次/peeling 上限、精确重传、双方冻结身份、明确停止原因 |
 | 双端接入示例 | examples/exchange，真实 MRCL 帧往返，首次/扩容/预算停止均带断言 |
 | 恢复率与成本评估 | [EVALUATION](EVALUATION.md)，4500个核心样本、160次会话、240项minisketch对照及原始数据 |
-| 独立发布接入 | tools/verify-consumer.mjs，使用固定版本注册表依赖；正式发布与冷安装待本次发布核验完成后记录 |
+| 独立发布接入 | 已发布 [apoloe4/moonreconcile@0.2.0](https://mooncakes.io/docs/apoloe4/moonreconcile@0.2.0)，工具从注册表安装并完成精确目标核验；CI新增独立安装检查 |
 
 保留原[项目申报书](PROJECT_PROPOSAL.md)，不在初审后悄悄改写承诺。原2026-10-20设计保留历史状态，当前实现以本表及生成API为准。
 
@@ -22,6 +22,12 @@
 - [完整评估运行](https://github.com/apoloe4/moonreconcile/actions/runs/40157127172)成功；报告与CSV已归档。失败样本保留，无虚构结果或只挑选成功输入。
 - 根目录Apache-2.0；[NOTICE](../NOTICE.md)说明IBLT、混合、CRC、AI辅助和minisketch对照的来源。运行时没有第三方C/C++实现；对照程序仅在CI临时目录链接上游MIT库。
 - [最新生态查重](DUPLICATION_REVIEW.md)保留查询结果、候选版本与边界，不把无命中当成完全不存在。
+
+## 发布与独立安装记录
+
+2026-10-25 使用官方工具链完成打包、解包检查和正式发布，服务器返回200 OK；注册表查询返回0.2.0。在项目目录之外建立独立模块，依赖固定版本 `apoloe4/moonreconcile@0.2.0`，执行update/check/run，输出 `published 0.2.0: exact target verified`。没有使用path依赖，发布操作的临时授权副本已清除。验证脚本首次漏写 `moon run` 的包路径，修正为 `moon run .` 后独立验证成功，修正已入库并加入CI。
+
+根目录排除注释与空行约1358行运行时代码、902行测试；不把CSV数据、文档或C++评估驱动计入MoonBit实现规模。规模不是代码堆砌目标，仍需用交付能力说明价值。
 
 ## 未覆盖与限制
 

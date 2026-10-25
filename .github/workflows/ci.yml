@@ -38,3 +38,16 @@ jobs:
       - run: moon fmt --check
       - run: moon info
       - run: git diff --exit-code
+  published-consumer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - name: Install registry release into an independent module
+        run: node tools/verify-consumer.mjs "$RUNNER_TEMP/moonreconcile-consumer"

@@ -55,7 +55,7 @@ moon run examples/capacity
 import { "apoloe4/moonreconcile" @reconcile }
 ```
 
-在独立 MoonBit 模块中安装固定版本：`moon add apoloe4/moonreconcile@0.2.0`。发布与冷安装证据见[验收进度](docs/ACCEPTANCE_REVIEW.md)；工具链建议使用本次验证的 MoonBit 0.10.17 或更新的兼容版本。
+在独立 MoonBit 模块中安装固定版本：`moon add apoloe4/moonreconcile@0.2.0`。已发布到 [Mooncakes](https://mooncakes.io/docs/apoloe4/moonreconcile@0.2.0)，独立安装证据见[验收进度](docs/ACCEPTANCE_REVIEW.md)；工具链建议使用本次验证的 MoonBit 0.10.17 或更新的兼容版本。
 
 ## 核心 API
 
