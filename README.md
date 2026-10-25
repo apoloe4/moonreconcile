@@ -1,6 +1,6 @@
 # MoonReconcile：MoonBit 集合差异摘要与恢复库
 
-**本文为现有版本的使用说明，不是项目申报书。** 报名材料请使用独立的[项目申报书](docs/PROJECT_PROPOSAL.md)；拟新增功能和验收条件见[下一阶段设计](docs/DESIGN_V0_2.md)。申报书中的规划不代表当前版本已支持。
+**本文为现有版本的使用说明，不是项目申报书。** 报名材料请使用独立的[项目申报书](docs/PROJECT_PROPOSAL.md)；原申报设计见[设计记录](docs/DESIGN_V0_2.md)，当前交付证据见[验收进度](docs/ACCEPTANCE_REVIEW.md)。
 
 **公开仓库与报名链接：** [https://github.com/apoloe4/moonreconcile](https://github.com/apoloe4/moonreconcile)。报名表的仓库链接栏请填写这个主页地址；`/commits/main` 是提交记录页面，不能用作仓库克隆地址。[申报书](docs/PROJECT_PROPOSAL.md) · [匿名访问核验记录](docs/ACCESS_VERIFICATION.md)。
 
@@ -11,7 +11,7 @@ cd moonreconcile
 
 两端都有大量记录、只有少数 ID 不同时，先交换紧凑摘要，再恢复双方缺少的 ID，减少全量清单传输。核心算法、协议处理、分区协商和测试均以 MoonBit 实现，无 JS 包装层、C FFI 或外部运行库依赖。
 
-**当前状态：0.1.0 实验版本。** 面向合作节点的集合同步；不是数据库、文件同步软件或已通过生产审计的安全协议。摘要格式是本项目自定义格式，不兼容 minisketch、Negentropy 或其他 IBLT 实现。
+**当前状态：0.2.0，实验性基础库。** 面向合作节点的集合同步；不是数据库、文件同步软件或已通过生产审计的安全协议。摘要格式是本项目自定义格式，不兼容 minisketch、Negentropy 或其他 IBLT 实现。
 
 ## 可以解决什么问题
 
@@ -32,7 +32,8 @@ cd moonreconcile
 - `FrameReader` 支持分块输入、截断检测和错误后重置。
 - 有序数据库游标可直接构建快照，校验重复和逆序 ID，无需保存完整成员 Map；容量规划器按字节预算给出初始宽度与重试上限。
 - `Layout / Manifest / BucketOffer / Collector` 支持先定位变化分区、任意顺序收集、幂等重传及全局差异数量限制。
-- 可运行的基础、分区和容量回退示例；确定性生成测试、异常输入测试与多编译目标 CI。
+- `Session` 累计限制收发帧字节、轮数和 peeling 步数，精确重传记账，固定双方快照并返回明确停止原因。
+- 基础、分区、容量和双端交换示例；60 项测试，四目标 CI；4500 项核心恢复率、160 项会话成本与240项 minisketch 对照，保留失败数据。
 
 ## 立即运行
 
@@ -54,7 +55,7 @@ moon run examples/capacity
 import { "apoloe4/moonreconcile" @reconcile }
 ```
 
-目前尚未发布到 Mooncakes，不能假定 `moon add apoloe4/moonreconcile` 已可用。发布后会在这里更新安装说明。
+在独立 MoonBit 模块中安装固定版本：`moon add apoloe4/moonreconcile@0.2.0`。发布与冷安装证据见[验收进度](docs/ACCEPTANCE_REVIEW.md)；工具链建议使用本次验证的 MoonBit 0.10.17 或更新的兼容版本。
 
 ## 核心 API
 
@@ -112,3 +113,7 @@ match @reconcile.reconcile(source.snapshot(config), received, @reconcile.Policy:
 - [项目申报书初稿](docs/PROJECT_PROPOSAL.md)：供参赛者理解和自行润色。
 - [来源与许可证说明](NOTICE.md)：算法参考论文、混合函数和 CRC 来源，AI 辅助说明。
 - 根目录 [Apache-2.0 许可证](LICENSE)。
+
+## 接口契约与验收证据
+
+[核心契约](docs/CORE_CONTRACT.md) · [会话接入](docs/SESSION.md) · [实测与原始数据](docs/EVALUATION.md) · [查重更新](docs/DUPLICATION_REVIEW.md) · [版本记录](CHANGELOG.md)。

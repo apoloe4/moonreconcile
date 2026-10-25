@@ -40,3 +40,7 @@ moon run examples/capacity
 ## CI
 
 `.github/workflows/ci.yml` 检查、构建、测试 wasm-gc/wasm/js/native，并运行三个示例；另一个 job 检查格式和生成接口是否与提交一致。CI 采用官方工具链安装脚本，升级工具链可能揭示 API 或语法变化。
+
+## 2026-10-25 增量验证
+
+本次升级至隔离的 MoonBit 0.10.17，wasm-gc、wasm、JS 各60项测试通过；新增会话测试覆盖精确预算、失败停止、重复帧、源/目标版本与指纹变化、协议错误和120组生成式会话。双端示例运行命令为 `moon run examples/exchange`；完整实测见 [EVALUATION](EVALUATION.md)，当前验收状态见 [ACCEPTANCE_REVIEW](ACCEPTANCE_REVIEW.md)。上文2026-10-04记录为历史版本，不代表本次测试数量。
