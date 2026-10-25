@@ -1,0 +1,22 @@
+[
+  {
+    "query": "iblt language:MoonBit",
+    "results": {
+      "description": "纯 MoonBit 集合差异同步库：IBLT、二进制摘要、分区协商与同步计划校验",
+      "fullName": "apoloe4/moonreconcile",
+      "url": "https://github.com/apoloe4/moonreconcile"
+    }
+  },
+  {
+    "query": "minisketch language:MoonBit",
+    "results": null
+  },
+  {
+    "query": "set-reconciliation language:MoonBit",
+    "results": null
+  },
+  {
+    "query": "invertible bloom MoonBit",
+    "results": null
+  }
+]

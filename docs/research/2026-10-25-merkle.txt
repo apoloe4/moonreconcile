@@ -1,0 +1,189 @@
+12 modules found
+
+ShiChengxu/moonappend@0.3.0 (36 downloads)
+  Bounded append-only Merkle log with inclusion and consistency proofs
+
+  ShiChengxu/moonappend
+    ShiChengxu/moonappend is an ordered append log library providing functions for data storage, historical snapshots, and range proofs. It supports persistent logging, consistency verification, and shard tree reconstruction using CompactRange structures and various proof types like ConsistencyProof and RangeProof.
+
+    Keywords: MoonAppend, MemoryLog, CompactRange, ConsistencyProof, RangeProof, InclusionProof, Snapshot, AppendError, DiskLog
+
+  ShiChengxu/moonappend/examples/interop
+    This package provides no documented types, traits, errors, or values in its public API documentation.
+
+  ShiChengxu/moonappend/examples/memory
+    This module provides no specific public API documentation according to the available sources.
+
+  ShiChengxu/moonappend/cmd/moonappend
+    This package defines a command-line interface structure using CliError for error handling.
+
+    Keywords: moonappend, cmd, CliError
+
+  ShiChengxu/moonappend/disk
+    DiskLog implements a single writer, append-only file log, allowing operations like appending data, creating, and opening logs. Key public methods include audit, backup, snapshot, and various proof generation functions like prove_consistency, prove_inclusion, and prove_range.
+
+    Keywords: DiskLog, append, audit, backup, snapshot, prove_consistency, prove_inclusion, prove_range, StorageError
+  Showing 5 of 7 matching packages.
+
+zploc/loci@0.1.0 (41 downloads)
+  Deterministic hashing, Merkle tree sealing, FST swarms, and AI inhabitation substrate for the loci runtime
+
+  zploc/loci
+    This package provides a deterministic substrate for hashing, tree sealing, storage policy control, daemon workflows, and Yata graph semantics. It offers a deterministic tree pipeline using hash primitives, MerkinTree, and sealing for building and sealing epochs.
+
+    Keywords: genius loci, deterministic hashing, tree sealing, MerkinTree, storage policy, daemon workflow, Yata graph, bloom filter, gaussian salience, artifact storage, OCI storage, locus runtime, conformance, CLI, WASM
+
+  zploc/loci/api
+    This package provides core primitives for building a content-addressed, multi-language peer coordination system. It offers bloom filtering for probabilistic routing and deduplication, a sparse merkle tree for envelope ingestion and epoch sealing, and drift commitment contracts that reconcile sparse tree state across Merkin, Mu, and Lang repositories.
+
+    Keywords: bloom filter, sparse merkle tree, bloom_add, bloom_check, tree_ingest, tree_seal, tree_sparse, drift commitment, plan_finger_wasm, triad_contract_wasm, content-addressed transfer, peer coordination, routing tokens…
+
+  zploc/loci/bloom
+    Provides a BloomSketch bit-array Bloom filter for probabilistic membership testing, used in machine pruning for routing. Supports adding tokens, checking possible membership, merging sketches, rebuilding from token arrays, and customizing bit-array size and hash count. Use cases include fast 'maybe contains' checks for tokens, objects, or features in zploc/l
+
+    Keywords: Bloom filter, BloomSketch, probabilistic membership, bit-array, add token, maybe_contains, merge sketches, rebuild, routing pruning, seal-time consolidation, zploc/loci, 布隆过滤器, 概率成员…
+
+  zploc/loci/cmd/main
+    This package provides the command-line entry point for the Loci tool, which manages (create, list, delete) named file system location bookmarks for fast directory navigation.
+
+    Keywords: loci, location bookmarks, directory navigation, command-line tool, zploc, cmd, main, file system locations
+
+  zploc/loci/conformance
+    Provides a lightweight linker for conformance package dependencies, keeping package imports explicit. Mainly used to verify that core packages are linked via the `core_packages_linked` function, which returns a boolean indicating whether essential dependencies are available.
+
+    Keywords: conformance, linker, package dependencies, core packages, bool, 测试, 链接器, 包依赖检查, zploc/loci
+  Showing 5 of 20 matching packages.
+
+wch6766/MoonSecureCodec@0.1.1 (29 downloads)
+  A production-grade software supply chain security, multi-base codec and Merkle tree verification toolkit in MoonBit.
+
+  wch6766/MoonSecureCodec/lib/merkle
+    RFC 6962 compliant Merkle Tree implementation with domain separation against second-preimage attacks. Provides creation of a Merkle tree from leaf bytes, generating inclusion proofs per leaf index, and verifying proofs against a root hash.
+
+    Keywords: Merkle, Merkle tree, Merkle proof, inclusion proof, RFC 6962, second-preimage resistance, root hash, verification, proof generation, 默克尔树, 默克尔证明, 包含证明
+
+  wch6766/MoonSecureCodec/lib/manifest
+    This package provides types and functions for software supply chain security: managing manifests with Merkle tree integrity, auditing dependencies and license policies, constructing evidence bundles for release review, enforcing release policies and approval gates, and producing audit reports and release decisions for CI integration.
+
+    Keywords: supply chain manifest, SBOM, Merkle root, audit, release policy, evidence bundle, dependency audit, approval gate, manifest diff, ReleaseDecision, FileSnapshot, MoonBit, 软件供应链安全, 发布审计, CI集成
+
+  wch6766/MoonSecureCodec
+    MoonSecureCodec is a MoonBit software supply-chain integrity library offering codecs (Hex, Base32, Base64, Base58, Multibase, CRC32, LEB128/Varint), digests (XXHash64, Murmur3-32, SHA-256, HMAC-SHA256, constant-time comparison), Merkle trees with inclusion proofs, and manifest/dependency auditing. Public use cases include creating manifests, building Merkle
+
+    Keywords: MoonSecureCodec, MoonBit, 供应链完整性, supply chain, codec, Base64, Base58, Multibase, CRC32, SHA-256, HMAC-SHA256, XXHash64, Merkle tree, manifest, dependency audit
+
+  wch6766/MoonSecureCodec/cmd/cli
+    This package has no publicly documented types, values, or errors in the provided README and API documentation, so its functionality cannot be determined from the given sources.
+
+    Keywords: MoonSecureCodec, cli, no_public_api, empty_api, undocumented
+
+  wch6766/MoonSecureCodec/lib/codec
+    This package provides encoding and decoding for multiple base formats (hex, base32, base58, base64, base64url) and multibase, plus CRC-32 checksum append/verify and unsigned LEB128 variable-length integer encoding/decoding. It supports content-addressed systems and transport frame manipulation.
+
+    Keywords: base encoding, multibase, hex, base16, base32, base58, base64, base64url, CRC-32, checksum, LEB128, varint, variable-length integer, MoonBit codec, 编码, 解码, 校验和
+  Showing 5 of 6 matching packages.
+
+xgzh1111/moonchunk@0.1.0 (21 downloads)
+  Content-defined chunking and incremental synchronization primitives for MoonBit
+
+  xgzh1111/moonchunk
+    MoonChunk is a MoonBit-native content-defined chunking and incremental synchronization library. It splits byte streams into content-addressed chunks, builds Merkle manifests for verification, and produces sync plans that reuse unchanged chunks between versions for backups, caches, and object stores.
+
+    Keywords: content-defined chunking, 内容定义分块, incremental synchronization, 增量同步, Merkle manifest, 梅克尔清单, Merkle tree, 梅克尔树, chunk store, 分块存储, integrity verification, 完整性验证, streaming chunker, MoonBit, moonchunk
+
+  xgzh1111/moonchunk/cmd/main
+    This package is a command-line entry point for the moonchunk application, but exposes no public API, types, or values in its current documentation.
+
+    Keywords: moonchunk, cmd, main, entry point
+
+starlittle/MoonEvidence@0.5.1 (62 downloads)
+  Trusted evidence pack verification library and CLI for MoonBit.
+
+  starlittle/MoonEvidence/src/merkle
+    The merkle package computes Merkle roots, builds inclusion proofs, and verifies single-leaf inclusion proofs against a root using leaf_hash and node_hash with a configurable HashAlgorithm. It also exposes a materialized MerkleTree for visualizing levels, leaf counts, heights, and leaf-to-root paths.
+
+    Keywords: merkle, Merkle tree, Merkle root, inclusion proof, proof verification, compute_root, compute_proof, compute_tree, verify_inclusion, leaf_hash, node_hash, MerkleTree, PathStep, ProofStep, Side
+
+  starlittle/MoonEvidence/src/api
+    This package provides evidence and audit functionality: creation/verification of evidence packs, Merkle tree computation, proof generation/verification, Ed25519 keypair/sign/verify, HMAC and SHA digests, and audit append/sign/verify. All functions accept JSON string requests and return JSON string responses.
+
+    Keywords: evidence, audit, Merkle tree, proof, Ed25519, signature, digest, HMAC, SHA256, SHA512, JSON API, MoonEvidence, verify, keypair, starlittle
+
+  starlittle/MoonEvidence/examples/quickstart
+    A quickstart example that demonstrates verifying an in-memory manifest, accepting original files, and rejecting changed bytes.
+
+    Keywords: MoonBit quickstart, in-memory manifest, file verification, acceptance test, rejection test, manifest verification, MoonEvidence examples, integrity check, binary verification
+
+  starlittle/MoonEvidence/src/audit
+    Provides an append-only audit log with a hash chain for tamper-evident record keeping. Supports creating entries with actions such as Created, Verified, Sealed, Signed, and Shared, computing entry hashes, signing with Ed25519, JSON serialization/deserialization, and verifying chain integrity and signatures.
+
+    Keywords: 审计日志, hash chain, AuditLog, AuditEntry, AuditAction, Ed25519, verify_chain, verify_signatures, append-only, tamper-evident, to_json, from_json, canonical JSON, chain integrity
+
+  starlittle/MoonEvidence/src/canonjson
+    canonjson provides deterministic JSON canonicalization for stable hash generation, including minimal whitespace, UTF-16 code-unit sorting of object keys, JCS string escaping, and shortest-form numbers. It exposes canonicalize, canonicalize_or_none, same_canonical_payload, and a code-unit comparator for cross-tool ordering compatibility.
+
+    Keywords: canonjson, canonical JSON, RFC 8785, JCS, deterministic serialization, JSON canonicalization, stable hash, object key sorting, UTF-16 code units, canonicalize, canonicalize_or_none, same_canonical_payload, compare_code_units, CanonError, UnsupportedNumber
+  Showing 5 of 14 matching packages.
+
+Kali-Leo/moonbit-CryptoAssert@0.2.0 (34 downloads)
+  Multi-chain cryptographic assertion & formal verification library.
+
+  Kali-Leo/moonbit-CryptoAssert
+    CryptoAssert is a three-tier cryptocurrency compliance and security assertion library for MoonBit. It provides formally verified address validation, transaction verification, replay protection, fee and bridge security checks, plus cryptographic primitives such as ECDSA secp256k1, SHA-256, Keccak-256, Base58Check, Bech32/Bech32m, EIP-712, RLP, and Sparse Merk
+
+    Keywords: cryptocurrency compliance, security assertion, formal verification, MoonBit, address validation, transaction verification, replay protection, bridge security, ECDSA secp256k1, SHA-256, Keccak-256, Bech32, Sparse Merkle Tree, UInt256, multisig threshold
+
+  Kali-Leo/moonbit-CryptoAssert/protocol
+    This package defines compile-time trait interfaces and data specifications for asserting blockchain transaction, address, and contract security properties in MoonBit. It provides address checksum and format verification, ECDSA secp256k1 signing and verification, EIP-712 typed-data hashing, RLP decoding, sparse Merkle tree inclusion/exclusion proofs, BigInt f
+
+    Keywords: CryptoAssert, protocol, AddressVerifier, SecurityVerifier, TransactionVerifier, AddressType, EcdsaSecp256k1, ecdsa_sign, ecdsa_verify, EIP-712, rlp_decode, SMTProof, verify_smt_inclusion, BigInt, fund conservation, replay protection, bech32_verify, base58_check_verify, keccak256, UInt256
+
+LAOBIAO656/moonreplaykit@0.2.0 (33 downloads)
+  Deterministic state-machine replay, checkpoint validation and divergence diagnostics for MoonBit.
+
+  LAOBIAO656/moonreplaykit
+    Deterministic state-machine replay and evidence toolkit for MoonBit. Provides hash-linked journals, replay with checkpoint resume, branch and reducer-version divergence diagnostics, invariant failure localization with shortest reproducing prefix, and Merkle-style evidence trees with logarithmic inclusion proofs for verifying transitions without full history.
+
+    Keywords: deterministic replay, state machine, journal, checkpoint, divergence diagnostics, invariant failure, Merkle evidence, inclusion proof, reducer migration, branch comparison, fingerprint, replay evidence, MoonReplayKit, MoonBit
+
+123123213weqw/moon_taskforge@0.10.0 (27 downloads)
+  Local incremental DAG task execution with cache and recovery
+
+  123123213weqw/moon_taskforge
+    Moon TaskForge provides incremental local task execution in MoonBit through a JSON CLI and reusable library API. It validates task graphs, plans bounded execution waves in dependency order, fingerprints inputs to reuse verified outputs, explains rebuild reasons, blocks work behind failures, and supports a recovery journal via the execute, run, load_tasks, pa
+
+    Keywords: Moon TaskForge, moon_taskforge, incremental build, task graph, 任务图, task execution, JSON CLI, fingerprint, Merkle, cache, load_tasks, execute, digest, dependency order, rebuild
+
+moonbit-community/verified@0.0.3 (1401 downloads)
+  —
+
+  moonbit-community/verified/merkle_tree
+    moonbit-community/verified/merkle_tree provides a small verified Merkle tree core. It offers singleton, combine, make_proof, verify_proof, generated_proof_verifies, leaf, root, and size for building trees, generating membership proof paths, and replaying proofs against a root hash; the hash boundary is trusted and leaves/hashes are represented as Int.
+
+    Keywords: Merkle tree, verified, merkle_tree, proof, verify_proof, make_proof, generated_proof_verifies, singleton, combine, root, leaf, size, MerkleProof, MerkleTree, 默克尔树
+
+mizchi/converge@0.2.0 (151 downloads)
+  CRDT-based local-first sync engine inspired by EG-Walker
+
+  mizchi/converge/merge
+    Provides CRDT merge logic using the EG-Walker algorithm: given an event graph, local frontier, and remote events, it returns a list of MergeOps (SetCell, InsertRow, DeleteRow) to apply. Conflicts on the same (table, row_id, column) are resolved with Last-Writer-Wins (LWW) based on lamport clock and peer ID.
+
+    Keywords: CRDT, merge, EG-Walker, Last-Writer-Wins, LWW, conflict resolution, MergeOp, EventGraph, merge 合并, 冲突解决, merkle, mizchi/converge
+
+Juwan-Hwang/moon-certified@0.1.1 (52 downloads)
+  Core algorithms and data structures for MoonBit — partially formally verified
+
+  Juwan-Hwang/moon-certified/crypto/merkle_tree
+    This package provides a SHA-256 based Merkle tree with immutable structure and Bitcoin-style odd-node duplication. It supports tree construction from data blocks, generating inclusion proofs for specific leaf indices, and verifying proofs against a known root hash.
+
+    Keywords: Merkle tree, Merkle proof, inclusion proof, SHA-256, Merkle根, Merkle证明, 默克尔树, 默克尔证明, 验证, build, make_proof, verify_proof, root_hash, leaf_hash, hash_to_hex
+
+hcjbat/moonbit-notary@0.1.0 (19 downloads)
+  Reusable MoonBit library and CLI for electronic evidence manifests, integrity verification, audit trails, and compliance reporting
+
+  hcjbat/moonbit-notary/src/digest
+    This package provides digest computation (MD5, SHA256, CRC32, FNV1a, MurmurHash3), Merkle root calculation, and digest verification for notary data integrity. Use cases include computing and verifying digests for evidence items and notary manifests.
+
+    Keywords: digest, hash, MD5, SHA256, CRC32, FNV1a, MurmurHash, Merkle root, notary, verification, data integrity, evidence, manifest, checksum, simulated cryptographic
+
+Run `moon add <module>@<version>` to add a dependency.

@@ -1,3 +1,43 @@
+# MoonReconcile 生态查重复核（2026-10-25）
+
+复核范围：公开 Mooncakes 包、GitHub 仓库和候选包已发布版本的 README/API/相关源码。结论是有限范围的功能重叠判断，不是源码相似度鉴定、著作权/专利审查或官方验收结论。
+
+## 查询与证据
+
+- `moon search <keyword> --limit 20`：iblt、ibf、minisketch、riblt、pinsketch、rateless、negentropy 均无模块命中。reconcile/reconciliation 多为账务、控制器状态与工作流协调；这些名称相似但问题域不同。
+- sketch 共返回13个模块；增加 distinct、merkle 查询，以覆盖统计摘要及树式同步的相邻方向。部分通用查询到达20条上限，不代表穷尽结果。
+- GitHub 查询 `iblt language:MoonBit` 仅命中本项目；`minisketch language:MoonBit`、`set-reconciliation language:MoonBit`、`invertible bloom MoonBit` 无命中。GitHub仓库搜索不等于全站源码搜索。
+- 原始输出：[research](research/)，文件前缀 `2026-10-25-`，GitHub结果为JSON。Mooncakes某些详情页访问失败，改用独立研究模块下载源码；研究依赖未加入项目运行依赖。
+
+## 候选与实际范围
+
+| 候选/核查版本 | 核查依据与能力 | 差异与重叠 |
+|---|---|---|
+| hiroyannnn/sketch 0.2.0 | 已下载接口与README；HLL、Count-Min、Cuckoo | 同属概率结构，但统计/成员查询不恢复双方独有ID |
+| cauchyQ/moon-sketch-kit 0.1.0 | 已下载接口；Bloom、MinHash、频次/流分析、预算报告 | 存在预算和摘要等工程概念重叠；未发现IBLT signed peeling |
+| Hhsqoo/moon-frequency-sketch 0.2.0 | codec接口中的sketch_diff输入含外部候选字符串列表，返回频次变化 | 已有摘要差异功能，不能说“只有本项目能比较摘要”；它依赖给定候选键，不是从集合摘要恢复未知差异ID |
+| zploc/loci 0.1.0 | [包文档](https://mooncakes.io/docs/zploc/loci)与本地tree接口；diff_trees/diff_sparse_trees | 已有Merkle差异定位，与集合核对相邻；本项目采用IBLT恢复，不主张同步需求独占 |
+| yhsrtty/moon-distinct-sketch 0.2.1 | 本次新增下载；README、metrics及serde/distributed接口 | 基数、频次、相似度、快照差值、帧和重放控制；这些工程能力不算本项目原创，未发现未知差异ID恢复接口 |
+| Juwan-Hwang/moon-certified 0.1.1 | 本次新增下载；containers/count_sketch、count_min_sketch、hyperloglog等接口及相关标识全文检索 | 已有基础算法与统计摘要，未发现IBLT/PinSketch/Rateless集合恢复接口；invertible字样的数学可逆性命中不等于IBLT |
+
+其余sketch命中包括CAD草图、图像效果、证明示例、路径规划和科学计算模块；本次做描述分流，未声称逐个完整审计。相邻六包的检查也不是对每一个函数的全面安全审计。
+
+## 独立贡献与边界
+
+保留已通过初审的同一选题和仓库，新增工作是纯MoonBit可复用的集合差异恢复、受预算约束的会话状态机、固定快照与精确重传，以及可复现失败数据。协议帧、CRC、版本检查、预算和测试属于常见工程做法，不单独宣称算法创新。IBLT本身是已有算法，出处见NOTICE。
+
+成熟的[bitcoin-core/minisketch](https://github.com/bitcoin-core/minisketch)同样解决集合差异恢复，已实际编译用于240项对照。不能因它不是MoonBit包就忽略其设计与成本优势；本项目不复制其实现，不宣称比其更紧凑或更快，不兼容其格式。保留IBLT是否适合实际业务，需要根据[EVALUATION](EVALUATION.md)的失败率和成本决定。
+
+## 复核结论
+
+在以上查询与明确版本的核查范围内，未发现另一项直接对应的MoonBit IBLT差异ID恢复库；存在统计摘要、快照差值、Merkle树差异等相邻成熟能力。该判断支持解释实现差异，不等同于“全生态唯一”或“必然通过验收”。未发布项目、检索遗漏、后续新增包及同赛道未公开申报仍无法排除。初审已通过也不替代最终质量验收。
+
+---
+
+## 历史记录（2026-10-04）
+
+以下为首次选题时的记录，状态与结论只属于当时；当前实现和查重以本页上半部分为准。
+
 # MoonReconcile 选题查重记录
 
 检索时间：2026-10-04。目标是判断公开 MoonBit 生态是否已有直接功能重叠，并解释独立库价值，不是官方审核结论，也不是完整的著作权或专利检索。

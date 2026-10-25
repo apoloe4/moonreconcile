@@ -1,0 +1,260 @@
+20 modules found
+
+yhsrtty/moon-distinct-sketch@0.2.1 (21 downloads)
+  MoonBit streaming sketches with bounded windows, metrics, validated frames, and distributed merge planning
+
+  yhsrtty/moon-distinct-sketch/cmd/main
+    The provided README and public API documentation are empty, so the package's functionality, public types, and use cases cannot be determined from the given sources.
+
+    Keywords: moon-distinct-sketch, cmd/main, yhsrtty/moon-distinct-sketch, yhsrtty, moon, distinct, sketch, cmd, main
+
+  yhsrtty/moon-distinct-sketch/src/bloom
+    This package provides a family of probabilistic Bloom filter data structures for approximate membership queries, duplicate detection, and cardinality sketching. It includes a fixed-size BloomFilter, a CountingBloomFilter that supports approximate deletion, a ScalableBloomFilter that grows layers as needed, and an AdmissionFilter that tracks new vs. seen keys
+
+    Keywords: Bloom filter, 概率性数据结构, 布鲁姆过滤器, approximate membership, AdmissionFilter, CountingBloomFilter, ScalableBloomFilter, BloomConfig, duplicate detection, probabilistic data structure, MoonBit, yhsrtty
+
+  yhsrtty/moon-distinct-sketch/src/countmin
+    This package provides Count-Min Sketch and Conservative Count-Min data structures for frequency estimation in data streams. It supports adding items with weights, querying estimated frequencies, and merging sketches.
+
+    Keywords: Count-Min Sketch, 保守计数最小草图, Conservative CountMin, 频率估计, frequency estimation, 数据流, data stream, 加权计数, weighted stream, add, estimate_frequency, merge, MoonBit sketch
+
+  yhsrtty/moon-distinct-sketch/src/distributed
+    This package provides distributed distinct-count estimation using HyperLogLog (HLL) sketches. It includes worker node sketches (NodeSketch), partition batch validation (PartitionBatch, MergePlan), replay protection (ReplayGuard), and hierarchical tree reduction (TreeReducer) to merge sketches across nodes for global cardinality estimates.
+
+    Keywords: distributed, distinct count, HyperLogLog, HLL, sketch, merge, cardinality, reduce, tree reduction, partition batch, replay guard, idempotence, NodeSketch, MergePlan, TreeReducer
+
+  yhsrtty/moon-distinct-sketch/src/hash
+    Provides hash utilities supporting Murmur3, XXHash64, SipHash24, and FNV-1a algorithms. Includes 32-bit and 64-bit hash functions for byte arrays and strings, with seed/key parameters and a HashAlgorithm enum.
+
+    Keywords: HashAlgorithm, Murmur3, XXHash64, SipHash24, FNV1a, hash_bytes_64, hash_string_64, byte array hashing, string hashing, seed, 64-bit hash, 32-bit hash, 哈希算法, 哈希
+  Showing 5 of 17 matching packages.
+
+xlyyyyyy112/moon-fuse@0.1.0 (18 downloads)
+  MoonBit Binary Fuse filters with deterministic bounded construction
+
+  xlyyyyyy112/moon-fuse
+    MoonFuse provides a pure MoonBit implementation of immutable approximate membership filters built from non-negative distinct integer hashes with a deterministic three-segment Binary-Fuse-style construction. It offers BinaryFuseFilter, string, tagged, sharded, epoch, overlay, verified, and static int/string map variants with contains queries, validation, stat
+
+    Keywords: moon-fuse, MoonFuse, BinaryFuseFilter, approximate membership filter, Bloom filter alternative, false positive, no false negatives, static set, StaticIntMap, StaticStringMap, StringFuseFilter, ShardedFuseFilter, EpochFuseFilter, encode_words, decode_words
+
+mizchi/js_convert@0.13.0 (1289 downloads)
+  MoonBit <-> JavaScript value conversion (Map/Json/Option/Result <-> Any) and runtime type inspection
+
+  mizchi/js_convert
+    Utilities for converting between MoonBit types (Option, Result, Map, Json, enums) and JavaScript values, plus serialization helpers that preserve Ok/Err or Some/None distinctions. Use for JS interop, JSON conversion, and Result/Option unwrapping when runtime processing is needed.
+
+    Keywords: MoonBit, JavaScript conversion, Option, Result, Json, from_map, to_json, serialize_option, serialize_result, unwrap_ok, unwrap_err, is_result_ok, is_result_err, get_enum_tag, get_enum_variant_name
+
+bobzhang/differential@0.1.0 (17 downloads)
+  Experimental Differential Dataflow port for MoonBit; upstream runtime compatibility is incomplete
+
+  bobzhang/differential
+    bobzhang/differential is a work-in-progress MoonBit implementation of Differential Dataflow and its Timely runtime, targeting upstream Rust compatibility. It provides timestamp lattices, antichains and frontiers, incremental operators such as map, filter, join, semijoin, antijoin, reduce and distinct, arrangements and trace readers, feedback iteration and fi
+
+    Keywords: differential dataflow, incremental computation, MoonBit, Timely, timestamp lattice, antichain, frontier, arrangement, join, reduce, iterate, fixed point, cluster, columnar codec, spill
+
+bobzhang/loop_invariants_string@0.16.0 (105 downloads)
+  String algorithms with loop-invariant explanations
+
+  bobzhang/loop_invariants_string/eertree
+    Provides an eertree (palindromic tree) for strings, built in O(n) time and space. Public functions return the number of distinct palindromic substrings, the longest palindromic substring length, and an array of all distinct palindromic substrings.
+
+    Keywords: eertree, palindromic tree, palindrome, distinct palindromes, palindromic substrings, longest palindromic substring, distinct_count, longest_length, palindromes, 回文树, 回文, 字符串, O(n)
+
+  bobzhang/loop_invariants_string/sam
+    Provides a suffix automaton (SAM) for strings, a compact minimal DFA recognizing all substrings with linear-time construction. The public API offers contains_substring(text, pattern) for substring membership queries and distinct_substrings_count(text) for counting distinct non-empty substrings.
+
+    Keywords: suffix automaton, SAM, substring, contains_substring, distinct_substrings_count, string algorithm, suffix link, endpos, substring query, distinct substrings, 后缀自动机, 子串, 字符串算法, MoonBit
+
+  bobzhang/loop_invariants_string/suffix_array
+    Provides suffix array construction and LCP array building for strings, plus a SuffixArray index with pattern search, occurrence counting, longest repeated substring, distinct substring counting, and lexicographic suffix retrieval. Useful for fast substring queries, repeated substring analysis, and distinct substring counting.
+
+    Keywords: suffix array, LCP array, SuffixArray, suffix_array, lcp_array, pattern search, substring, longest repeated substring, distinct substrings, find_all, count, search, 字符串, 后缀数组, 重复子串
+
+  bobzhang/loop_invariants_string/suffix_automaton
+    Implements a suffix automaton (SAM) for lowercase Latin strings, supporting online construction via add_char or build, O(|pattern|) substring checks, distinct substring counting, occurrence counting, and a longest_common_substring function for two strings.
+
+    Keywords: suffix automaton, SAM, suffix_automaton, substring, contains, count_distinct_substrings, count_occurrences, longest_common_substring, SuffixAutomaton, SAMState, add_char, build, state_count, 后缀自动机, 最长公共子串
+
+moonrockz/wit@0.3.0 (44 downloads)
+  WIT syntax tooling for MoonBit
+
+  moonrockz/wit/binary/core_model
+    Provides retained internal WebAssembly core types for the moonrockz/wit binary compatibility profile, including Module, Instruction, ValueType, FuncType, SubType, and related structures. Supports type construction, subtyping and type-equivalence contexts, canonical type indices, and module type lookups; it performs no execution and is distinct from moonrockz
+
+    Keywords: WebAssembly, Wasm, core_model, Module, Instruction, ValueType, FuncType, SubType, SubtypingContext, TypeEquivalenceContext, binary, 兼容性, 类型, 验证
+
+Ag108/MoonReduce@0.2.0 (34 downloads)
+  Deterministic failure-preserving testcase reduction for MoonBit projects
+
+  Ag108/MoonReduce/evaluator/process
+    Provides process execution for MoonReduce predicate evaluation. The run function executes direct argv in a given working directory with concurrently drained bounded stdout and stderr, returning an Evaluation and raising ProcessError for expected adapter failures distinct from a command's nonzero exit. Non-UTF8 output is decoded lossily. Input must be strict
+
+    Keywords: MoonReduce, process, evaluator, run, PredicateSpec, Evaluation, ProcessError, argv, cwd, stdout, stderr, 进程执行, 谓词求值, UTF8
+
+Hhsqoo/moon-frequency-sketch@0.2.0 (29 downloads)
+  A pure MoonBit streaming analytics library with frequency, heavy-hitter, cardinality, quantile, sliding-window, telemetry, and serialization components.
+
+  Hhsqoo/moon-frequency-sketch/sketch/cardinality
+    This package provides a HyperLogLog (HLL) implementation for compact cardinality (distinct count) estimation with deterministic merge semantics. It supports adding integers, strings, or precomputed hashes, estimating the number of distinct identifiers, merging sketches, and querying precision and register count.
+
+    Keywords: HyperLogLog, HLL, cardinality estimation, distinct count, sketch, merge, precision, registers, add_int, add_str, add_hash, estimate, merge_in_place, memory_bytes, register_count
+
+oboard/morm@0.5.0 (701 downloads)
+  A lightweight MoonBit ORM with typed queries, code generation, and multi-database engines
+
+  oboard/morm/engine/mongodb
+    MongoDBEngine provides a MongoDB backend for the morm engine, opened from a DSN and exposing asynchronous CRUD, aggregation, counting, distinct queries, bulk writes, indexing, and search-index management over JSON documents. It also implements the Engine trait with exec, exec_raw, page, page_raw, migrate_table, and close for integration with morm query build
+
+    Keywords: oboard/morm, MongoDBEngine, MongoDB, engine, morm, aggregate, bulk_write, find, find_one, insert_many, update_many, delete_many, create_index, search index, migrate_table
+
+mldong/moon-hutool@0.1.7 (467 downloads)
+  Hutool-style utility library for MoonBit: all packages depend only on moonbitlang/core (no FFI, fully synchronous); the two exceptions both build on official `moonbitlang/async` — `sched` (cron timer firing, three targets) and `http` (injectable HTTP transport port, native+wasm only)
+
+  mldong/moon-hutool/coll
+    mldong/moon-hutool/coll provides Array-based collection utilities complementing MoonBit core: group_by, partition, order-preserving distinct and distinct_by, freq frequency maps, page and page_count pagination, array union, intersection and subtract, plus maximum, minimum, maximum_by_key and minimum_by_key with first-tie selection. It targets use cases where
+
+    Keywords: coll, CollUtil, 数组, group_by, partition, distinct, distinct_by, freq, page, page_count, union, intersection, subtract, maximum, minimum
+
+FrozenLemonTee/LunarUnits@0.1.9 (303 downloads)
+  A runtime dimension-checked physical quantity and unit system for MoonBit.
+
+  FrozenLemonTee/LunarUnits/dimensions/solid_angle_dimension
+    Provides a custom solid-angle dimension (`solid_angle()`) that keeps solid angles distinct from dimensionless scalars, enabling explicit photometry and geometry formulas such as `luminous_intensity * solid_angle`.
+
+    Keywords: solid angle dimension, solid_angle, custom dimension, photometry, geometry, steradian, luminous flux, luminous intensity, moonbit, FrozenLemonTee, LunarUnits, 立体角, 维度, 光度学
+
+  FrozenLemonTee/LunarUnits/units/angle
+    Provides plane-angle units (radian, degree, turn, arcminute, arcsecond, cycle, hertz) on a custom angle dimension, treating angle as explicit to keep torque, angular velocity and cyclic frequency distinct. Enables unit conversions such as 1 turn = 2π rad and 1 Hz = 2π rad/s.
+
+    Keywords: angle units, plane angle, radian, degree, turn, arcminute, arcsecond, cycle, hertz, angular frequency, angle dimension, unit conversion, 角度单位, 弧度, 转, 赫兹
+
+Luna-Flow/floating@0.10.0 (161 downloads)
+  Arbitrary-precision binary, decimal, and ball arithmetic for MoonBit, with checked operations and explicit numeric semantics.
+
+  Luna-Flow/floating/decimal_gda
+    decimal_gda provides the General Decimal Arithmetic (GDA) surface for MoonBit, with opaque Decimal, GdaContext, GdaFlags, and GdaTrapSet types distinct from the IEEE package. Operations return GdaOutcome carrying sticky status, raised signals, and the GDA-defined result when a trap is enabled, supporting arithmetic, comparison, rounding, conversion, and deci
+
+    Keywords: decimal_gda, GDA, General Decimal Arithmetic, Decimal, GdaContext, GdaFlags, GdaTrapSet, GdaOutcome, GdaSignal, GdaRoundingMode, decTest, decimal32, decimal64, decimal128, interchange format
+
+bobzhang/loop_invariants_techniques@0.18.0 (125 downloads)
+  General algorithmic techniques with loop-invariant explanations
+
+  bobzhang/loop_invariants_techniques/hyperloglog
+    HyperLogLog cardinality sketch for estimating the number of distinct items in a stream, with O(1) add, O(m) estimate, and mergeable registers. Supports creating sketches with configurable precision, adding Int64 items, estimating cardinality, merging sketches of equal precision, and querying register count.
+
+    Keywords: HyperLogLog, cardinality, distinct count, streaming sketch, approximate counting, hyperloglog, new, add, estimate, merge, register_count, 基数估计, 去重计数, 概率数据结构, mergeable sketch
+
+  bobzhang/loop_invariants_techniques/mo_algorithm
+    …algorithm for answering many offline range queries on a static array by reordering queries so a sliding window moves little. It explains the add/remove model, block sorting by left block and right endpoint, sqrt(n) complexity, and a rollback variant for structures where remove is imp
+
+    Keywords: Mo's algorithm, offline range queries, 莫队算法, sqrt decomposition, sliding window, add remove, block decomposition, range queries, distinct count, rollback, rollback DSU, Union-Find, competitive programming, offline queries, loop invariants
+
+  bobzhang/loop_invariants_techniques/mos_algorithm
+    A tutorial package with no exported functions that explains Mo's algorithm for offline range queries on a static array, covering block decomposition, query ordering, sliding-window add/remove updates, step-by-step examples, complexity O((n + q) * sqrt(n)), and practical tips.
+
+    Keywords: Mo's algorithm, 莫队算法, offline range queries, range queries, block decomposition, sliding window, sqrt decomposition, distinct values, add/remove, query sorting, tutorial, no exported functions, 离线查询, 区间查询
+
+bobzhang/loop_invariants_math@0.17.0 (117 downloads)
+  Mathematical algorithms with loop-invariant explanations
+
+  bobzhang/loop_invariants_math/integer_partition
+    Provides functions for integer partition numbers. It computes p(n) for small n and the number of partitions into distinct parts q(n), plus a table of p(0) through p(n) modulo a positive modulus using Euler's pentagonal recurrence.
+
+    Keywords: integer partition, partition function, p(n), distinct partitions, q(n), partition_table_mod, distinct_partition_table, partition, Euler pentagonal recurrence, 模运算, 整数拆分
+
+bobzhang/loop_invariants_dp@0.15.0 (107 downloads)
+  Dynamic programming algorithms with loop-invariant explanations
+
+  bobzhang/loop_invariants_dp/distinct_subsequences
+    This package provides dynamic programming functions for counting distinct subsequences modulo 1e9 + 7. count_all_subseq returns the number of distinct non-empty subsequences of an integer array, and count_equal_target counts distinct subsequences of one array that equal a target array.
+
+    Keywords: distinct subsequences, dynamic programming, count_all_subseq, count_equal_target, 子序列, 不同子序列, loop invariants, mod 1e9+7, subsequence counting, DP, Array[Int], Int64
+
+  bobzhang/loop_invariants_dp/coin_change_count
+    Provides dynamic-programming helpers for coin change problems: count_ordered counts ordered sequences of coin denominations summing to an amount, count_unordered counts multisets of distinct positive denominations summing to an amount, and min_coins returns the minimum number of coins needed or -1 when impossible. Counting results are taken modulo 1e9 + 7.
+
+    Keywords: coin change, dynamic programming, count_ordered, count_unordered, min_coins, ordered sequences, multisets, minimum coins, modulo, 1e9+7, 硬币找零, 零钱兑换, 组合计数, 最少硬币…
+
+bobzhang/loop_invariants_data_structures@0.12.0 (95 downloads)
+  Data structures with loop-invariant explanations
+
+  bobzhang/loop_invariants_data_structures/sqrt
+    Tutorial-oriented package illustrating sqrt decomposition techniques for range queries, including SqrtSum for range sums with O(1) point updates, SqrtMin with lazy range add, Mo's algorithm for offline distinct-value queries, and an interval tree (Chtholly Tree) for range assign. It also provides isqrt_ceil for choosing the block size; all types are private
+
+    Keywords: sqrt decomposition, 平方分割, 分块, SqrtSum, SqrtMin, range sum, range minimum, lazy propagation, 惰性标记, Mo's algorithm, 莫队算法, IntervalTree, Chtholly…
+
+  bobzhang/loop_invariants_data_structures/wavelet
+    This package provides a wavelet tree implementation for fast range queries on a static array of integers. It supports operations such as count, count_less, count_range, quantile, select, mode, and distinct_values over half-open index ranges, with queries running in O(log S) time.
+
+    Keywords: wavelet tree, range queries, static array, count, count_less, count_range, quantile, select, mode, distinct_values, rank, O(log S), 小波树, 区间查询
+
+Juwan-Hwang/moon-certified@0.1.1 (52 downloads)
+  Core algorithms and data structures for MoonBit — partially formally verified
+
+  Juwan-Hwang/moon-certified/containers/hyperloglog
+    Provides a HyperLogLog sketch for approximate distinct counting. Supports adding String and Int keys, merging sketches of equal precision, and estimating cardinality with small- and large-range corrections.
+
+    Keywords: HyperLogLog, 基数估计, sketch, distinct count, approximate counting, merge, estimate, precision, registers, add, add_int, new, 草图, 合并, 估算
+
+  Juwan-Hwang/moon-certified/geometry/closest_pair
+    Provides an efficient O(n log n) algorithm to compute the minimum squared Euclidean distance among any two distinct points from an array. Also includes a convenience constructor for points.
+
+    Keywords: closest pair, minimum distance, squared Euclidean distance, points, Array, O(n log n), Point constructor, geometry, efficient algorithm, Int64?, MoonBit
+
+  Juwan-Hwang/moon-certified/math/polynomial_factor
+    Provides polynomial factorization over odd prime finite fields GF(p) using square-free, distinct-degree, and equal-degree (Cantor-Zassenhaus) factorization. Also includes helper polynomial arithmetic functions (derivative, division, GCD) for Double coefficients.
+
+    Keywords: polynomial factorization, finite field, GF(p), Cantor-Zassenhaus, square-free factorization, distinct-degree factorization, equal-degree factorization, polynomial derivative, polynomial division, polynomial GCD, modular arithmetic, irreducible factors, MoonBit, Juwan-Hwang
+
+  Juwan-Hwang/moon-certified/string/lcp_array
+    Builds the LCP (Longest Common Prefix) array from a suffix array and a string, then provides functions to count distinct substrings and find the longest repeated substring in linear time.
+
+    Keywords: LCP array, suffix array, build, longest common prefix, Kasai's algorithm, count distinct substrings, longest repeated substring, string, FixedArray, Int64, distinct substrings, repeated substring, linear time, MoonBit, string processing
+
+  Juwan-Hwang/moon-certified/string/palindromic_tree
+    Provides a palindromic tree (eertree) data structure for efficient string palindrome analysis. Supports building the tree, counting distinct and total palindromic substrings, finding the longest palindrome, counting occurrences of a specific palindrome, and enumerating all distinct palindromes.
+
+    Keywords: palindromic tree, eertree, palindrome, string algorithm, palindromic substring, distinct palindromes, palindrome count, longest palindrome, occurrence count, string analysis, MoonBit, Juwan-Hwang/moon-certified
+  Showing 5 of 8 matching packages.
+
+vitro/engine@0.8.0 (51 downloads)
+  MoonBit implementation of the Vitro C teaching engine: 137 diagnostic codes, 135 opcodes, full AST family, byte-for-byte parity with the Rust oracle
+
+  vitro/engine/names
+    Provides naming and name-mangling helpers for the vitro/engine compiler, including constructor definition and call names and a stable type-to-suffix encoding used for overload resolution. The type suffix encodes parameter types so overloads differing only by types get distinct symbols.
+
+    Keywords: vitro, engine, names, ctor_call_name, ctor_def_name, type_mangle_suffix, name mangling, mangled name, constructor, overload resolution, 重载决议, 构造函数, 类型编码
+
+walkzzz/moon-geometry@0.251.0 (34 downloads)
+  Pure MoonBit computational geometry library: convex hull, Delaunay, Voronoi, polygon boolean ops, transforms, Minkowski
+
+  walkzzz/moon-geometry/applied/graph_color
+    graph_color provides graph coloring utilities over adjacency lists, including greedy_color for color assignment, is_valid_coloring and is_bipartite checks, and chromatic_number_upper for counting distinct colors used.
+
+    Keywords: graph_color, graph coloring, greedy_color, chromatic_number_upper, is_bipartite, is_valid_coloring, adjacency list, bipartite, 图着色, 贪心算法, 二部图, 邻接表, 着色方案, 颜色数
+
+  walkzzz/moon-geometry/curves/lagrange
+    The lagrange module provides Lagrange interpolation utilities: it computes Lagrange basis polynomials, evaluates an interpolation polynomial at a point, interpolates 2D points using their x-coordinates as nodes, and checks whether interpolation nodes are distinct. It is part of the moon-geometry project.
+
+    Keywords: lagrange, Lagrange interpolation, Lagrange basis polynomial, lagrange_basis, lagrange_eval, lagrange_interpolate, lagrange_nodes_distinct, moon-geometry, curves, 插值, 拉格朗日插值, 基多项式, 2D points, Point2D, interpolation nodes
+
+mizchi/veri@0.2.0 (23 downloads)
+  Proof models, verified runtime APIs, and differential checks for MoonBit
+
+  mizchi/veri/ieee754/float32
+    Provides a proof-only binary32 (IEEE 754 single-precision) Float32 type distinct from MoonBit's executable Float. Offers operations like add, sub, mul, div, fma, sqrt, abs, neg with an explicit RoundingMode, plus predicates (is_finite, is_nan, eq, le) and proof lemmas about NaN, signed zeros, and finite self-subtraction.
+
+    Keywords: float32, ieee754, proof-only, binary32, rounding mode, arithmetic operations, nan, is_finite, is_nan, fma, sqrt, signed zeros, proof lemmas, 浮点32位, IEEE754
+
+  mizchi/veri/list
+    Provides a proof-only Why3 list type for formal verification, distinct from MoonBit runtime linked lists, with constructors (empty, cons) and operations including append, head, tail, length, reverse, membership, equality, and emptiness checks.
+
+    Keywords: proof-only list, Why3 list, List, append, cons, head, tail, length, reverse, mem, is_empty, eq, formal verification, verification
+
+  mizchi/veri/runtime/set
+    This is the runtime Set checker for the `veri` package. It re-exports the core `Set` type without wrapping, and provides `matches_elements`, a runtime-tested function that checks whether a Set's contents exactly match a given array of distinct elements (in any order), rejecting duplicates.
+
+    Keywords: Set, runtime checker, matches_elements, exact contents, elements match, ArrayView, veri, mizchi/veri/runtime/set, core Set, runtime-tested, duplicates rejected, set equality, Hash, Eq
+
+Run `moon add <module>@<version>` to add a dependency.
