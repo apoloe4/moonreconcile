@@ -22,7 +22,7 @@
 
 本地使用隔离的官方MoonBit 0.1.20261023 / moonc0.10.17运行check、build、test、fmt和info；60项测试通过。实际版本门槛验证：系统旧moonc0.10.14被拒绝，隔离moonc0.10.17通过。没有改写系统工具链。Native由Ubuntu CI验证，本机没有C编译器。
 
-0.2.0的[已通过CI](https://github.com/apoloe4/moonreconcile/actions/runs/40197308436)覆盖四目标、格式与独立消费；[完整评估](https://github.com/apoloe4/moonreconcile/actions/runs/40197308465)亦通过。0.2.1对应的最新运行见[仓库Actions](https://github.com/apoloe4/moonreconcile/actions)，以具体提交的最终状态为准。发布与独立消费核验完成后，开发记录补充实际链接。
+0.2.0的[已通过CI](https://github.com/apoloe4/moonreconcile/actions/runs/40197308436)覆盖四目标、格式与独立消费；[完整评估](https://github.com/apoloe4/moonreconcile/actions/runs/40197308465)亦通过。0.2.1的[运行41003897135](https://github.com/apoloe4/moonreconcile/actions/runs/41003897135)已通过四目标check/build/test/示例、工具链门槛、格式、生成接口及全新独立模块安装检查。正式发布返回200 OK；注册表下载0.2.1后独立执行update/check/build/run（JS与默认WebAssembly运行均验证），输出 `published 0.2.1: exact target verified`。
 
 ## 规模、来源与实际边界
 
