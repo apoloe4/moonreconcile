@@ -1,38 +1,37 @@
-# MoonReconcile 验收自查与交付进度
+# 十月验收指南逐项对照
 
-日期：2026-10-25。项目：十月黑客松已通过初审的 MoonReconcile。本文是开发者本地自查，不是组委会验收结果，不承诺奖金。十月的具体截止时间、验收入口与奖金安排以十月通知为准，不套用八月日程。
+更新：2026-10-30。依据参赛者提供的九项验收指南，初审通过者**无需另填验收表格**，持续开发并将对应内容上传GitHub即可。此前文档关于“需要申请验收入口/再交表”的说明已撤回。本文是工程自查，官方验收和奖金仍由组委会决定。
 
-## 本次交付
+## 九项要求与证据
 
-| 已通过申报中的承诺 | 对应交付与证据 |
-|---|---|
-| 核心契约及边界 | [CORE_CONTRACT](CORE_CONTRACT.md)，独立 Sketch API；部分恢复不输出 Plan，核验失败使会话失效 |
-| 累计预算控制 | exchange.mbt，字节/轮次/peeling 上限、精确重传、双方冻结身份、明确停止原因 |
-| 双端接入示例 | examples/exchange，真实 MRCL 帧往返，首次/扩容/预算停止均带断言 |
-| 恢复率与成本评估 | [EVALUATION](EVALUATION.md)，4500个核心样本、160次会话、240项minisketch对照及原始数据 |
-| 独立发布接入 | 已发布 [apoloe4/moonreconcile@0.2.0](https://mooncakes.io/docs/apoloe4/moonreconcile@0.2.0)，工具从注册表安装并完成精确目标核验；CI新增独立安装检查 |
+| 项 | 指南要求 | 项目对应实现与核验方式 |
+|---|---|---|
+| 1 | MoonBit为主，moonc≥0.10.16 | 算法、帧编解码、分区和会话均为MoonBit；项目采用已验证的moonc **0.10.17**基线，高于赛事下限。CI执行 `node tools/check-toolchain.mjs` 检查实际编译器，拒绝过旧/无法识别的版本 |
+| 2 | GitHub公开、记录清晰 | [公开主页](https://github.com/apoloe4/moonreconcile)，默认分支main；提交分别覆盖算法、测试、评估、兼容修复和发布，不用空提交凑数 |
+| 3 | 结构清晰、核心功能有效 | [源码职责](PACKAGE_LAYOUT.md)、[核心契约](CORE_CONTRACT.md)、[会话接入](SESSION.md)；实现差异ID恢复、计划核验、预算停止、快照失效及精确重传 |
+| 4 | README有目标、安装、使用与示例，可复现 | [README](../README.md)、[从空目录安装](QUICKSTART.md)；给出moon.mod、moon.pkg、main.mbt、安装/检查/构建/运行及预期输出 |
+| 5 | CI覆盖检查、构建、测试 | [ci.yml](../.github/workflows/ci.yml)在wasm-gc/wasm/js/native执行check/build/test，另查格式、生成接口和独立注册表消费 |
+| 6 | 至少一个可运行样例 | `moon run examples/basic`；`moon run examples/exchange`验证首次成功、扩容、预算回退，结果用断言核验 |
+| 7 | 测试覆盖核心路径 | 60项自动测试，包含120组生成式会话、精确差集对照、损坏帧、溢出、预算边界、重传和失效；详见 [TESTING](TESTING.md) |
+| 8 | 发布mooncakes.io | [apoloe4/moonreconcile@0.2.1](https://mooncakes.io/docs/apoloe4/moonreconcile@0.2.1)，固定版本安装；独立消费者不使用本地path依赖，执行update/check/build/run |
+| 9 | OSI许可证及上游合规 | 根目录[Apache-2.0](../LICENSE)；[NOTICE](../NOTICE.md)记录算法参考、CRC、混合函数、AI辅助及minisketch的MIT来源；对照库不进入运行依赖 |
 
-保留原[项目申报书](PROJECT_PROPOSAL.md)，不在初审后悄悄改写承诺。原2026-10-20设计保留历史状态，当前实现以本表及生成API为准。
+## 声明功能的交付证据
 
-## 验证证据
+原[已通过初审申报书](PROJECT_PROPOSAL.md)保持不变。核心契约、跨轮预算控制和双端示例已交付；原始4500个核心样本、160次会话与240项minisketch对照在 [EVALUATION](EVALUATION.md)，失败行同样归档。当前补丁不改变算法和MRCL/MRPM格式，版本差异见 [CHANGELOG](../CHANGELOG.md)。
 
-- 本地隔离安装官方 MoonBit 0.1.20261023 / moonc 0.10.17；未替换系统原工具链。修正新格式要求的 Int32 和可选参数写法，更新生成接口。
-- wasm-gc、wasm、JS各60项测试通过，检查启用 deny-warn；格式和接口已重新生成。Native 构建/测试由Ubuntu CI验证，本机没有C编译器。
-- GitHub [首次新增功能检查](https://github.com/apoloe4/moonreconcile/actions/runs/40157127139)：四目标功能测试成功，style因旧格式失败；已在后续提交修复格式。[运行40196667304](https://github.com/apoloe4/moonreconcile/actions/runs/40196667304)的四目标check/build/test/示例及style全部通过；[复跑评估40196667378](https://github.com/apoloe4/moonreconcile/actions/runs/40196667378)亦成功。
-- [完整评估运行](https://github.com/apoloe4/moonreconcile/actions/runs/40157127172)成功；报告与CSV已归档。失败样本保留，无虚构结果或只挑选成功输入。
-- 根目录Apache-2.0；[NOTICE](../NOTICE.md)说明IBLT、混合、CRC、AI辅助和minisketch对照的来源。运行时没有第三方C/C++实现；对照程序仅在CI临时目录链接上游MIT库。
-- [最新生态查重](DUPLICATION_REVIEW.md)保留查询结果、候选版本与边界，不把无命中当成完全不存在。
+本地使用隔离的官方MoonBit 0.1.20261023 / moonc0.10.17运行check、build、test、fmt和info；60项测试通过。实际版本门槛验证：系统旧moonc0.10.14被拒绝，隔离moonc0.10.17通过。没有改写系统工具链。Native由Ubuntu CI验证，本机没有C编译器。
 
-## 发布与独立安装记录
+0.2.0的[已通过CI](https://github.com/apoloe4/moonreconcile/actions/runs/40197308436)覆盖四目标、格式与独立消费；[完整评估](https://github.com/apoloe4/moonreconcile/actions/runs/40197308465)亦通过。0.2.1对应的最新运行见[仓库Actions](https://github.com/apoloe4/moonreconcile/actions)，以具体提交的最终状态为准。发布与独立消费核验完成后，开发记录补充实际链接。
 
-2026-10-25 使用官方工具链完成打包、解包检查和正式发布，服务器返回200 OK；注册表查询返回0.2.0。在项目目录之外建立独立模块，依赖固定版本 `apoloe4/moonreconcile@0.2.0`，执行update/check/run，输出 `published 0.2.0: exact target verified`。没有使用path依赖，发布操作的临时授权副本已清除。验证脚本首次漏写 `moon run` 的包路径，修正为 `moon run .` 后独立验证成功，修正已入库并加入CI。
+## 规模、来源与实际边界
 
-根目录排除注释与空行约1358行运行时代码、902行测试；不把CSV数据、文档或C++评估驱动计入MoonBit实现规模。规模不是代码堆砌目标，仍需用交付能力说明价值。
+根包排除注释与空行约1358行运行时代码、902行测试；不把CSV、文档、C++对照驱动计入MoonBit实现量。主要实现语言与有效功能应以源码和运行结果判断，不靠数据文件充行数。
 
-## 未覆盖与限制
+IBLT不是原创算法；[查重复核](DUPLICATION_REVIEW.md)只是在公开查询与六个相邻包版本范围内的比较，不宣称全生态唯一。minisketch仅在离线CI临时目录编译链接，其MIT实现未复制进运行库。
 
-尚无第三方实际部署、真实数据库负载、认证网络或安全审计。minisketch对照只覆盖共同的小规模矩阵，不代表已测完全部大规模输入；双方全量构建成本未公平对照，因此不作速度领先宣称。CRC和集合指纹不是恶意输入认证。项目完成度与生产成熟度应分开评价。
+尚无真实数据库长期负载、认证网络或第三方安全审计。概率指纹和CRC不是身份认证；传输、内容验证、持久化、冲突解决和全量回退由应用负责。对照评估有清晰的计时/样本边界，不宣称速度优势或必然恢复。
 
-## 参赛者验收提交
+## 后续维护
 
-提交仓库主页 https://github.com/apoloe4/moonreconcile，附本报告、申报书、版本记录、CI及评估链接，按十月官方入口申请验收。初审通过通知未提供的具体截止时间和收款流程，需查阅官方后续通知。开发者应能解释核心算法、失败边界、测试与来源；AI辅助不能替代本人理解和维护。
+无需为本次验收再提交表格。保持main分支可访问，持续上传真实开发、测试和文档；参赛者应理解算法、失败边界及来源，并关注组委会后续通知。奖金与最终验收结果不由本报告保证。

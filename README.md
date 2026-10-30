@@ -1,8 +1,6 @@
 # MoonReconcile：MoonBit 集合差异摘要与恢复库
 
-**本文为现有版本的使用说明，不是项目申报书。** 报名材料请使用独立的[项目申报书](docs/PROJECT_PROPOSAL.md)；原申报设计见[设计记录](docs/DESIGN_V0_2.md)，当前交付证据见[验收进度](docs/ACCEPTANCE_REVIEW.md)。
-
-**公开仓库与报名链接：** [https://github.com/apoloe4/moonreconcile](https://github.com/apoloe4/moonreconcile)。报名表的仓库链接栏请填写这个主页地址；`/commits/main` 是提交记录页面，不能用作仓库克隆地址。[申报书](docs/PROJECT_PROPOSAL.md) · [匿名访问核验记录](docs/ACCESS_VERIFICATION.md)。
+**源码与文档：** [GitHub](https://github.com/apoloe4/moonreconcile) · [从空目录安装](docs/QUICKSTART.md) · [源码结构](docs/PACKAGE_LAYOUT.md) · [九项验收对照](docs/ACCEPTANCE_REVIEW.md)。
 
 ```sh
 git clone https://github.com/apoloe4/moonreconcile.git
@@ -11,7 +9,7 @@ cd moonreconcile
 
 两端都有大量记录、只有少数 ID 不同时，先交换紧凑摘要，再恢复双方缺少的 ID，减少全量清单传输。核心算法、协议处理、分区协商和测试均以 MoonBit 实现，无 JS 包装层、C FFI 或外部运行库依赖。
 
-**当前状态：0.2.0，实验性基础库。** 面向合作节点的集合同步；不是数据库、文件同步软件或已通过生产审计的安全协议。摘要格式是本项目自定义格式，不兼容 minisketch、Negentropy 或其他 IBLT 实现。
+**当前状态：0.2.1，实验性基础库。** 面向合作节点的集合同步；不是数据库、文件同步软件或已通过生产审计的安全协议。摘要格式是本项目自定义格式，不兼容 minisketch、Negentropy 或其他 IBLT 实现。
 
 ## 可以解决什么问题
 
@@ -37,7 +35,7 @@ cd moonreconcile
 
 ## 立即运行
 
-安装 [MoonBit 工具链](https://www.moonbitlang.com/download)，进入仓库根目录：
+安装 [MoonBit 工具链](https://www.moonbitlang.com/download)，确认 `moonc -v` 不低于 **0.10.17**（满足赛事0.10.16下限），进入仓库根目录：
 
 ```sh
 moon check --deny-warn
@@ -45,6 +43,7 @@ moon test --deny-warn
 moon run examples/basic
 moon run examples/partitioned
 moon run examples/capacity
+moon run examples/exchange
 ```
 
 基础示例输出新增 `[5]`、移除 `[1, 4]`，同步结果 `[2, 3, 5]`。不需要服务器、密钥、账号或网络。
@@ -55,7 +54,7 @@ moon run examples/capacity
 import { "apoloe4/moonreconcile" @reconcile }
 ```
 
-在独立 MoonBit 模块中安装固定版本：`moon add apoloe4/moonreconcile@0.2.0`。已发布到 [Mooncakes](https://mooncakes.io/docs/apoloe4/moonreconcile@0.2.0)，独立安装证据见[验收进度](docs/ACCEPTANCE_REVIEW.md)；工具链建议使用本次验证的 MoonBit 0.10.17 或更新的兼容版本。
+在独立 MoonBit 模块中安装固定版本：`moon add apoloe4/moonreconcile@0.2.1`。已发布到 [Mooncakes](https://mooncakes.io/docs/apoloe4/moonreconcile@0.2.1)，独立安装证据见[验收进度](docs/ACCEPTANCE_REVIEW.md)；工具链建议使用本次验证的 MoonBit 0.10.17 或更新的兼容版本。
 
 ## 核心 API
 
@@ -110,10 +109,14 @@ match @reconcile.reconcile(source.snapshot(config), received, @reconcile.Policy:
 - [查重记录](docs/DUPLICATION_REVIEW.md)：检索范围、竞争库源码核查与不确定项。
 - [接口使用指南](docs/USAGE.md)、[二进制格式](docs/WIRE_FORMAT.md)、[测试说明](docs/TESTING.md)。
 - [可复现基准](docs/BENCHMARK.md)：不同集合大小、差异量和 seed 下的构建、编解码、恢复及应用耗时。
-- [项目申报书初稿](docs/PROJECT_PROPOSAL.md)：供参赛者理解和自行润色。
+- [已通过初审的项目申报书](docs/PROJECT_PROPOSAL.md)：保留原内容，后续开发证据单独记录。
 - [来源与许可证说明](NOTICE.md)：算法参考论文、混合函数和 CRC 来源，AI 辅助说明。
 - 根目录 [Apache-2.0 许可证](LICENSE)。
 
 ## 接口契约与验收证据
 
 [核心契约](docs/CORE_CONTRACT.md) · [会话接入](docs/SESSION.md) · [实测与原始数据](docs/EVALUATION.md) · [查重更新](docs/DUPLICATION_REVIEW.md) · [版本记录](CHANGELOG.md)。
+
+## 验收说明
+
+按参赛者2026-10-30提供的验收指南，初审通过后无需再提交验收表格，只需持续开发并上传GitHub。九项要求及对应证据见 [验收对照](docs/ACCEPTANCE_REVIEW.md)；项目申报书保持不变。

@@ -17,6 +17,7 @@ jobs:
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
       - name: Evaluate MoonReconcile
         run: |
+          node tools/check-toolchain.mjs
           mkdir -p results
           moon version --all > results/toolchain.txt
           moon run examples/evaluate --target native --release -- --full > results/core.csv

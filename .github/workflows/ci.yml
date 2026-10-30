@@ -19,6 +19,7 @@ jobs:
           curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
       - run: moon version --all
+      - run: node tools/check-toolchain.mjs
       - run: moon check --deny-warn --target ${{ matrix.target }}
       - run: moon build --deny-warn --target ${{ matrix.target }}
       - run: moon test --deny-warn --target ${{ matrix.target }}
@@ -31,10 +32,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
       - name: Install MoonBit
         run: |
           curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - run: node tools/check-toolchain.mjs
       - run: moon fmt --check
       - run: moon info
       - run: git diff --exit-code
@@ -50,4 +55,6 @@ jobs:
           curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
       - name: Install registry release into an independent module
-        run: node tools/verify-consumer.mjs "$RUNNER_TEMP/moonreconcile-consumer"
+        run: |
+          node tools/check-toolchain.mjs
+          node tools/verify-consumer.mjs "$RUNNER_TEMP/moonreconcile-consumer"
